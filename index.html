@@ -229,6 +229,7 @@ dialog[open]::backdrop{animation:fade .3s}
 .mk-rc{position:absolute;z-index:2;pointer-events:none;opacity:0}
 .mk-cv{position:absolute;left:0;top:0;width:240px;height:240px;z-index:3;pointer-events:none;will-change:transform;filter:drop-shadow(0 5px 5px rgba(0,0,0,.4))}
 .mk-cv.hot{pointer-events:auto;cursor:pointer}
+@media(max-width:559px){.mk-vine{opacity:.6}.mk-rc{mix-blend-mode:normal}}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}
   html{scroll-behavior:auto}
@@ -1006,7 +1007,7 @@ buildStatus(); buildRegions(); update(); buildScale(); buildActs();
 /* ---------- monkey ---------- */
 (function monkey(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const mq=matchMedia('(min-width:560px)');
+  const mq=matchMedia('(min-width:320px)');
   /* the whole scene lives in page coordinates: vines, monkey and swing rope scroll with the document */
   const W=18, LEFF=238, HOLD=37, ROPEL=LEFF-HOLD, DX=170, G=1500, OM=2.3, DAMP=.1, SZ=240, HALF=120, TAU=Math.PI*2;
   const AYOFF=Math.sqrt(LEFF*LEFF-DX*DX);
