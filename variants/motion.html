@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Last — Endangered animals and how many are left</title>
+<meta name="description" content="Explore 18 endangered animals: how many are left, what threatens them, and what is helping them recover.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 110'%3E%3Cpath d='M18 20L30 12L44 10L54 6L60 12L66 16L72 14L76 10L84 12L90 16L93 24L92 30L94 36L89 44L93 50L100 54L96 61L88 70L84 80L80 90L74 98L66 104L58 106L52 102L49 94L48 92L46 80L44 70L44 66L42 58L40 56L35 54L28 58L22 56L14 56L8 52L3 40L6 32L12 26L16 22Z' fill='%2317302A' stroke='%2317302A' stroke-width='4' stroke-linejoin='round'/%3E%3Cellipse cx='94' cy='84' rx='4' ry='10' transform='rotate(18 94 84)' fill='%23C8372D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+  --mist:#E8EEE9; --paper:#F5F8F4; --ink:#17302A; --ink-2:#47605A; --lichen:#9DB3A6;
+  --line:rgba(23,48,42,.14); --lake:#2F6F7E;
+  --cr:#C8372D; --en:#D9822B; --vu:#E3C04A;
+  --cr-t:#A92A20; --en-t:#995110; --vu-t:#6E5F0A;
+  --up:#2C7A57;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'Source Serif 4',Georgia,serif;
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --lift:0 1px 2px rgba(23,48,42,.08),0 14px 30px -14px rgba(23,48,42,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.07;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body:has(dialog[open]){overflow:hidden}
+h1,h2,h3,.display{font-family:var(--display);letter-spacing:-.03em;line-height:1.02;margin:0;font-weight:700}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--lake);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* header */
+.top{position:sticky;top:0;z-index:50;background:rgba(232,238,233,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand svg{width:30px;height:32px;display:block}
+.brand span{font-family:var(--display);font-weight:800;font-size:1.65rem;letter-spacing:-.04em;line-height:1}
+.nav{display:flex;gap:4px}
+.nav a{font-family:var(--display);font-weight:500;font-size:.95rem;text-decoration:none;color:var(--ink);padding:8px 12px;border-radius:999px;transition:transform .35s var(--spring)}
+.nav a:hover{background:rgba(23,48,42,.08)}
+.nav a:active{transform:scale(.95)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--display);font-weight:600;font-size:1rem;letter-spacing:-.01em;border:1.5px solid var(--ink);border-radius:999px;padding:12px 22px;text-decoration:none;background:transparent;color:var(--ink);transition:transform .4s var(--spring)}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.96)}
+.btn.primary{background:var(--ink);color:var(--paper);box-shadow:0 10px 22px -10px rgba(23,48,42,.6)}
+.btn.primary:hover{background:#0f2420}
+.btn.ghost:hover{background:rgba(23,48,42,.07)}
+.btn.sm{padding:8px 16px;font-size:.92rem}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:56px 0 72px;
+  background:
+   radial-gradient(60% 55% at 85% 25%,rgba(47,111,126,.20),transparent 70%),
+   radial-gradient(45% 45% at 5% 95%,rgba(200,55,45,.12),transparent 70%),
+   radial-gradient(40% 40% at 50% 0%,rgba(255,255,255,.55),transparent 70%)}
+.hero .wrap{display:grid;gap:40px;align-items:center}
+.hero h1{font-size:clamp(3.1rem,9vw,7rem);max-width:9ch;font-weight:800;letter-spacing:-.045em;line-height:.95}
+.hero .lede{margin-top:24px;font-size:1.2rem;max-width:34em;color:var(--ink-2)}
+.hero .cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
+.stage{position:relative;justify-self:center;width:min(100%,540px)}
+.stage canvas{display:block;width:100%;aspect-ratio:104/110;touch-action:pan-y;cursor:crosshair}
+.stage-panel{margin-top:6px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:var(--paper);border-radius:18px;padding:14px 16px;box-shadow:var(--lift)}
+.stage-panel p{font-size:.95rem;line-height:1.5;max-width:26em;color:var(--ink-2)}
+.stage-panel strong{font-family:var(--display);font-size:1.5rem;letter-spacing:-.03em;color:var(--ink);display:block;line-height:1.1}
+.stage-actions{display:flex;gap:8px}
+@media(min-width:960px){.hero{padding:88px 0 104px}.hero .wrap{grid-template-columns:1.05fr .95fr;gap:56px}}
+
+/* sections */
+section{position:relative}
+.sec{padding:80px 0}
+.sec h2{font-size:clamp(2.1rem,5vw,3.4rem)}
+.sec .intro{margin-top:14px;max-width:36em;color:var(--ink-2)}
+
+/* status bar */
+.status{margin-top:36px;display:flex;flex-direction:column;gap:8px}
+.seg{position:relative;text-align:left;border:0;border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:2px;transition:transform .4s var(--spring);box-shadow:var(--lift)}
+.seg:hover{transform:translateY(-3px)}
+.seg:active{transform:scale(.98)}
+.seg b{font-family:var(--display);font-size:2.4rem;line-height:1;letter-spacing:-.04em}
+.seg .l{font-family:var(--display);font-weight:600;font-size:1.02rem}
+.seg .d{font-size:.9rem;line-height:1.45;opacity:.85}
+.seg.cr{background:var(--cr);color:#fff}
+.seg.en{background:var(--en);color:var(--ink)}
+.seg.vu{background:var(--vu);color:var(--ink)}
+.seg[aria-pressed="true"]{outline:3px solid var(--ink);outline-offset:3px}
+@media(min-width:760px){.status{flex-direction:row}.seg{min-height:150px;justify-content:flex-end}.seg.cr{flex:10 1 0}.seg.en,.seg.vu{flex:4 1 0}.seg.en .d,.seg.vu .d{display:none}}
+
+/* controls */
+.controls{margin-top:28px;display:grid;gap:14px}
+.search{position:relative}
+.search input{width:100%;font:inherit;font-family:var(--display);font-size:1rem;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:13px 20px 13px 46px;box-shadow:inset 0 1px 2px rgba(23,48,42,.06)}
+.search input::placeholder{color:#6f857d}
+.search input:focus-visible{outline-offset:2px}
+.search svg{position:absolute;left:17px;top:50%;width:18px;height:18px;transform:translateY(-50%);color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--display);font-weight:500;font-size:.93rem;border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:7px 14px;transition:transform .35s var(--spring)}
+.chip:hover{border-color:var(--ink)}
+.chip:active{transform:scale(.94)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.sort{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:.93rem}
+.sort select{font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:7px 12px}
+.count{font-family:var(--display);font-size:.95rem;color:var(--ink-2)}
+@media(min-width:900px){.controls{grid-template-columns:minmax(260px,1fr) auto;align-items:center}.controls .search{grid-column:1}.controls .row{grid-column:1 / -1}}
+
+/* cards */
+.grid{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.card{position:relative;display:block;width:100%;text-align:left;border:0;padding:0;background:var(--paper);border-radius:22px;box-shadow:var(--lift);transition:transform .45s var(--spring)}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 2px 4px rgba(23,48,42,.1),0 26px 44px -16px rgba(47,111,126,.4);opacity:0;transition:opacity .35s;pointer-events:none}
+.card:hover{transform:translateY(-5px)}
+.card:hover::after{opacity:1}
+.card:active{transform:translateY(-2px) scale(.985)}
+.art{position:relative;display:block;aspect-ratio:4/3;border-radius:22px 22px 0 0;overflow:hidden;background:var(--lichen)}
+.art svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover .art svg{transform:scale(1.06)}
+.badge{position:absolute;left:12px;top:12px;display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-weight:600;font-size:.82rem;line-height:1;padding:7px 11px 7px 9px;border-radius:999px;background:rgba(245,248,244,.94);color:var(--ink);box-shadow:0 4px 12px -4px rgba(23,48,42,.35)}
+.badge i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.s-cr{--c:var(--cr)}.s-en{--c:var(--en)}.s-vu{--c:var(--vu)}
+.cbody{display:block;padding:18px 20px 20px}
+.name{display:block;font-family:var(--display);font-weight:700;font-size:1.55rem;letter-spacing:-.03em;line-height:1.1}
+.sci{display:block;font-style:italic;color:var(--ink-2);font-size:.97rem;margin-top:2px}
+.meta{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--display);font-size:.95rem}
+.meta b{font-weight:700;font-size:1.1rem;letter-spacing:-.02em}
+.trend{display:inline-flex;align-items:center;gap:6px;color:var(--ink-2);white-space:nowrap}
+.trend::before{content:"";width:9px;height:9px;background:currentColor;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.trend.up{color:var(--up)}
+.trend.down{color:var(--cr-t)}.trend.down::before{transform:rotate(180deg)}
+.trend.stable::before,.trend.mixed::before,.trend.unknown::before{clip-path:none;height:3px;border-radius:2px;width:11px}
+.empty{grid-column:1/-1;background:var(--paper);border-radius:22px;padding:40px 24px;text-align:center;box-shadow:var(--lift)}
+.empty h3{font-size:1.6rem}
+.empty p{color:var(--ink-2);margin:8px 0 18px}
+
+/* scale */
+.dark{background:var(--ink);color:#E6EEE8;overflow:hidden;
+  background-image:radial-gradient(50% 60% at 90% 0%,rgba(47,111,126,.45),transparent 70%),radial-gradient(40% 50% at 0% 100%,rgba(200,55,45,.25),transparent 70%)}
+.dark .intro{color:#B7C9BF}
+.scale{margin-top:40px}
+.bars{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.bar{display:grid;grid-template-columns:1fr;gap:4px;width:100%;text-align:left;border:0;background:transparent;color:inherit;border-radius:12px;padding:8px 10px;transition:transform .35s var(--spring)}
+.bar:hover{background:rgba(255,255,255,.07)}
+.bar:active{transform:scale(.99)}
+.bar .t{display:flex;justify-content:space-between;gap:12px;font-family:var(--display);font-size:.98rem}
+.bar .t em{font-style:normal;color:#B7C9BF}
+.track{position:relative;height:14px;border-radius:7px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 1px,transparent 1px 20%);border-right:1px solid rgba(255,255,255,.16)}
+.fill{position:absolute;left:0;top:2px;bottom:2px;border-radius:5px;background:var(--c);transform-origin:left;transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.scale.in .fill{transform:scaleX(1)}
+.axis{display:grid;grid-template-columns:repeat(5,1fr);margin-top:8px;padding:0 10px;font-family:var(--display);font-size:.82rem;color:#9DB3A6}
+.axis span:last-child{text-align:right}
+.note{margin-top:18px;font-size:.95rem;color:#B7C9BF;max-width:40em}
+@media(min-width:760px){.bar{grid-template-columns:200px 1fr 130px;align-items:center;gap:16px}.bar .t{display:contents}.bar .t span{grid-column:1}.bar .t em{grid-column:3;grid-row:1;text-align:right;color:#E6EEE8}.track{grid-column:2;grid-row:1}.axis{margin-left:226px;margin-right:156px;padding:0}.axis span{transform:translateX(-0)}}
+
+/* act */
+.acts{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:10px;max-width:760px}
+.act{display:flex;gap:16px;align-items:flex-start;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--paper);border-radius:18px;padding:16px 18px;transition:transform .4s var(--spring)}
+.act:hover{transform:translateX(4px)}
+.act:active{transform:scale(.99)}
+.box{flex:none;width:26px;height:26px;border-radius:9px;border:2px solid var(--ink-2);display:grid;place-items:center;margin-top:2px}
+.box svg{width:16px;height:16px;opacity:0;transform:scale(.4);transition:transform .4s var(--spring),opacity .2s;color:var(--paper)}
+.act[aria-pressed="true"] .box{background:var(--up);border-color:var(--up)}
+.act[aria-pressed="true"] .box svg{opacity:1;transform:scale(1)}
+.act[aria-pressed="true"] .at{text-decoration:line-through;text-decoration-color:rgba(23,48,42,.4);color:var(--ink-2)}
+.act b{display:block;font-family:var(--display);font-weight:600;font-size:1.08rem;letter-spacing:-.015em;line-height:1.3}
+.act small{display:block;font-size:.95rem;color:var(--ink-2);line-height:1.5;margin-top:2px}
+.prog{margin-top:20px;font-family:var(--display);font-weight:600}
+
+footer{padding:48px 0 64px;border-top:1px solid var(--line)}
+footer .wrap{display:grid;gap:20px}
+footer p{font-size:.93rem;color:var(--ink-2);max-width:46em;line-height:1.6}
+footer a{color:var(--ink)}
+
+/* dialog */
+dialog{padding:0;border:0;border-radius:26px;width:min(760px,calc(100% - 20px));max-height:calc(100dvh - 24px);background:var(--paper);color:var(--ink);box-shadow:0 2px 6px rgba(23,48,42,.2),0 50px 90px -20px rgba(15,36,32,.6);overflow:auto;overscroll-behavior:contain}
+dialog::backdrop{background:rgba(15,36,32,.62);backdrop-filter:blur(5px)}
+dialog[open]{animation:pop .5s var(--spring)}
+dialog[open]::backdrop{animation:fade .3s}
+@keyframes pop{from{transform:translateY(24px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0}}
+.d-art{position:relative;height:200px}
+.d-art svg{position:absolute;inset:0;width:100%;height:100%}
+.x{position:absolute;right:14px;top:14px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(245,248,244,.95);display:grid;place-items:center;box-shadow:0 6px 14px -6px rgba(23,48,42,.5);transition:transform .35s var(--spring)}
+.x:hover{transform:rotate(90deg)}
+.x:active{transform:scale(.9)}
+.x svg{position:static;width:18px;height:18px}
+.d-body{padding:26px 28px 28px}
+.d-body h2{font-size:clamp(2rem,6vw,2.9rem)}
+.d-body .sci{font-size:1.1rem;margin-top:6px}
+.fact{margin-top:18px;font-size:1.15rem;line-height:1.65;max-width:34em}
+.facts{display:grid;gap:0;margin:24px 0 0;border-top:1px solid var(--line)}
+.facts div{display:grid;gap:2px;padding:12px 0;border-bottom:1px solid var(--line)}
+.facts dt{font-family:var(--display);font-size:.9rem;color:var(--ink-2);font-weight:500}
+.facts dd{margin:0;font-family:var(--display);font-weight:600;font-size:1.05rem;line-height:1.4}
+@media(min-width:620px){.facts div{grid-template-columns:130px 1fr;gap:16px;align-items:baseline}}
+.d-body h3{font-size:1.25rem;margin:30px 0 10px;letter-spacing:-.02em}
+.dots{display:flex;flex-wrap:wrap;gap:5px;padding:16px;background:var(--mist);border-radius:16px}
+.dots i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.dots-cap{font-size:.93rem;color:var(--ink-2);margin-top:8px}
+.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tags li{font-family:var(--display);font-weight:500;font-size:.92rem;padding:6px 13px;border-radius:999px;background:rgba(200,55,45,.1);color:var(--cr-t)}
+.d-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:32px;padding-top:20px;border-top:1px solid var(--line);flex-wrap:wrap}
+.d-nav span{font-family:var(--display);font-size:.9rem;color:var(--ink-2)}
+
+/* ===================== MOTION LAYER: CSS (motion.html) =====================
+   Everything below is additive. Classes js-motion / js-fine are set by JS only when
+   prefers-reduced-motion is off (js-motion) and a mouse-like pointer exists (js-fine). */
+:root{--out:cubic-bezier(.16,1,.3,1)}
+
+/* [m1] scroll progress */
+.m-progress{position:fixed;left:0;top:0;right:0;height:3px;z-index:60;background:var(--lake);transform:scaleX(0);transform-origin:0 50%;pointer-events:none;will-change:transform}
+.nav a[aria-current="true"]{background:rgba(23,48,42,.08)}
+
+/* [m2] hero entrance: headline words rise through a mask, rest fades up */
+.js-motion .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding:.06em .04em .1em 0;margin:-.06em 0 -.1em}
+.js-motion .hero h1 .w>span{display:inline-block;transform:translate3d(0,110%,0);animation:m-rise 1s var(--out) forwards;animation-delay:calc(var(--i)*80ms + 120ms)}
+.js-motion .hero .lede,.js-motion .hero .cta,.js-motion .stage-panel{animation:m-up .9s var(--out) both}
+.js-motion .hero .lede{animation-delay:.55s}
+.js-motion .hero .cta{animation-delay:.7s}
+.js-motion .stage-panel{animation-delay:.9s}
+@keyframes m-rise{to{transform:none}}
+@keyframes m-up{from{opacity:0;transform:translate3d(0,16px,0)}to{opacity:1;transform:none}}
+/* hero depth: panel drifts opposite the dots (vars set per frame on .stage) */
+.js-fine .stage-panel{translate:calc(var(--hx,0)*-7px) calc(var(--hy,0)*-5px)}
+
+/* [m3] restrained scroll reveals */
+.js-motion [data-rv]{opacity:0;transform:translate3d(0,18px,0);transition:opacity .8s var(--out),transform .9s var(--out);transition-delay:calc(var(--d,0)*70ms)}
+.js-motion [data-rv].rv-in{opacity:1;transform:none}
+
+/* [m4] magnetic buttons (fine pointers) */
+.js-fine .btn,.js-fine .btn:hover{transform:translate3d(var(--mx,0px),var(--my,0px),0)}
+.js-fine .btn:hover{transform:translate3d(var(--mx,0px),calc(var(--my,0px) - 2px),0)}
+.js-fine .btn:active{transform:translate3d(var(--mx,0px),var(--my,0px),0) scale(.96)}
+.js-fine .btn.mag{transition:transform .22s var(--out)}
+
+/* [m5] card tilt, pointer spotlight, art parallax (fine pointers) */
+.js-fine .card,.js-fine .card:hover{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translate3d(0,var(--ty,0px),0)}
+.js-fine .card:hover{--ty:-5px}
+.js-fine .card:active{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translate3d(0,-2px,0) scale(.985)}
+.js-fine .card.tilting{transition:transform .14s linear}
+.js-fine .card .art svg{transform:scale(1.05) translate3d(calc(var(--px,0)*-9px),calc(var(--py,0)*-7px),0);transition:transform .7s var(--out)}
+.js-fine .card:hover .art svg{transform:scale(1.11) translate3d(calc(var(--px,0)*-9px),calc(var(--py,0)*-7px),0)}
+.spot{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:2;opacity:0;transition:opacity .35s}
+.spot i{position:absolute;left:-170px;top:-170px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.42),rgba(255,255,255,0) 65%);will-change:transform}
+.card:hover .spot{opacity:1}
+
+/* [m6] scale chart: dim siblings of the hovered/focused bar */
+.bars .bar{transition:transform .35s var(--spring),opacity .3s}
+@media(hover:hover){.bars:has(.bar:hover) .bar:not(:hover),.bars:has(.bar:focus-visible) .bar:not(:focus-visible){opacity:.5}}
+
+/* [m7] custom cursor ring (desktop mouse only; native cursor stays) */
+.m-cursor{position:fixed;left:0;top:0;z-index:120;pointer-events:none;opacity:0;transition:opacity .25s;mix-blend-mode:difference;will-change:transform}
+.m-cursor.on{opacity:1}.m-cursor.off{opacity:0}
+.m-cursor i{position:absolute;left:-19px;top:-19px;width:38px;height:38px;border-radius:50%;border:1.5px solid #fff;transition:transform .45s var(--spring),background-color .3s;transform:scale(.7)}
+.m-cursor.is-link i{transform:scale(1.1)}
+.m-cursor.is-card i{transform:scale(2.1);background:rgba(255,255,255,.14)}
+.m-cursor.is-canvas i{transform:scale(1.5)}
+.m-cursor b{position:absolute;left:-30px;top:-9px;width:60px;text-align:center;font:600 .72rem/18px var(--display);color:#fff;opacity:0;transform:scale(.6);transition:opacity .25s,transform .4s var(--spring)}
+.m-cursor.is-card b{opacity:1;transform:none}
+
+/* [m8] dialog: shared-element morph (View Transitions) + staggered dots */
+dialog.vt[open]{animation:none}
+::view-transition-group(animal-art){animation-duration:.6s;animation-timing-function:var(--out);z-index:1}
+::view-transition-old(animal-art),::view-transition-new(animal-art){height:100%;object-fit:cover;overflow:clip}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
+.js-motion .dots i{animation:m-dot .55s var(--spring) both;animation-delay:calc(var(--i,0)*9ms + 260ms)}
+@keyframes m-dot{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:none}}
+.seg b{font-variant-numeric:tabular-nums}
+/* =================== END MOTION LAYER: CSS =================== */
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}
+  html{scroll-behavior:auto}
+  .m-cursor,.spot{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="mark" viewBox="0 0 104 110">
+    <path d="M18 20L30 12L44 10L54 6L60 12L66 16L72 14L76 10L84 12L90 16L93 24L92 30L94 36L89 44L93 50L100 54L96 61L88 70L84 80L80 90L74 98L66 104L58 106L52 102L49 94L48 92L46 80L44 70L44 66L42 58L40 56L35 54L28 58L22 56L14 56L8 52L3 40L6 32L12 26L16 22Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="94" cy="84" rx="4" ry="10" transform="rotate(18 94 84)" style="fill:var(--cr)"/>
+  </symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Last, home">
+      <svg aria-hidden="true"><use href="#mark"/></svg>
+      <span>Last</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#species">Animals</a>
+      <a href="#scale">Scale</a>
+      <a href="#act">Help</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>How many are left?</h1>
+        <p class="lede">Eighteen endangered animals, what is pushing them out, and what is bringing some of them back.</p>
+        <div class="cta">
+          <a class="btn primary" href="#species">Explore the animals</a>
+          <a class="btn ghost" href="#scale">See the scale</a>
+        </div>
+      </div>
+      <div class="stage">
+        <canvas id="dots" role="img" aria-label="Africa drawn as a field of dots. Move over it to erase dots, or use the buttons below."></canvas>
+        <div class="stage-panel">
+          <p><strong id="erased">0% gone</strong>Wild animal populations that scientists monitor have fallen 73% on average since 1970 (WWF Living Planet Report 2024).</p>
+          <div class="stage-actions">
+            <button class="btn sm primary" id="b73" type="button">Show 73%</button>
+            <button class="btn sm ghost" id="brestore" type="button">Restore</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="species">
+    <div class="wrap">
+      <h2>The animals</h2>
+      <p class="intro">Tap a status to filter, or search by name. Open any card to see its numbers drawn one dot at a time.</p>
+
+      <div class="status" id="status"></div>
+
+      <div class="controls">
+        <label class="search">
+          <span class="sr">Search animals</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="Search by name, place or threat" autocomplete="off">
+        </label>
+        <div class="chips" id="regions" role="group" aria-label="Filter by region"></div>
+        <div class="row">
+          <p class="count" id="count" role="status"></p>
+          <label class="sort">Sort by
+            <select id="sort">
+              <option value="rarest">Fewest left</option>
+              <option value="name">Name</option>
+              <option value="status">Risk level</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <ul class="grid" id="grid"></ul>
+    </div>
+  </section>
+
+  <section class="sec dark" id="scale">
+    <div class="wrap">
+      <h2>How few is few?</h2>
+      <p class="intro">Every bar is a wild population. Each step to the right is ten times more animals, so a small gap here hides a huge difference. Select a bar to open that animal.</p>
+      <div class="scale" id="scaleBox">
+        <ul class="bars" id="bars"></ul>
+        <div class="axis" aria-hidden="true"><span>1</span><span>10</span><span>100</span><span>1,000</span><span>10,000</span></div>
+      </div>
+      <p class="note" id="scaleNote"></p>
+    </div>
+  </section>
+
+  <section class="sec" id="act">
+    <div class="wrap">
+      <h2>What you can do</h2>
+      <p class="intro">None of these saves a species alone. Together they reduce the pressure that put these animals on the list. Your ticks stay on this device.</p>
+      <ul class="acts" id="acts"></ul>
+      <p class="prog" id="prog" role="status"></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Last, back to top"><svg aria-hidden="true"><use href="#mark"/></svg><span>Last</span></a>
+    <p>Status categories follow the IUCN Red List of Threatened Species. Population figures are rounded estimates from recent IUCN assessments and conservation groups, and they change as surveys are updated. For current numbers, check <a href="https://www.iucnredlist.org" rel="noopener">iucnredlist.org</a>. Cards use illustrated landscapes, not photographs.</p>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dName"></dialog>
+
+<script>
+const STATUS = {
+  cr:{label:'Critically endangered',short:'Critically endangered',desc:'Facing an extremely high risk of extinction in the wild.',rank:0},
+  en:{label:'Endangered',short:'Endangered',desc:'Facing a very high risk of extinction in the wild.',rank:1},
+  vu:{label:'Vulnerable',short:'Vulnerable',desc:'Facing a high risk of extinction in the wild.',rank:2}
+};
+const STATUS_COLOR = {cr:'#C8372D',en:'#D9822B',vu:'#E3C04A'};
+const TREND = {up:'Increasing',down:'Decreasing',stable:'Stable',mixed:'Mixed',unknown:'Unknown'};
+const REGIONS = ['Africa','Asia','Americas','Europe','Oceania','Oceans and poles'];
+const PALETTE = {
+  'Africa':['#F6DDA8','#E9A265','#9A5E3B','#6A3F2E','#3D2A24'],
+  'Asia':['#D4E6D9','#8FB7A3','#5B8C77','#355F50','#1B3A32'],
+  'Americas':['#F5C2AE','#D9808A','#8E4A6E','#5E3358','#35203B'],
+  'Europe':['#E6E0F1','#AEA3CF','#7A6FAE','#54497F','#2F2951'],
+  'Oceania':['#CBE6EC','#74B4C6','#3E8497','#25596C','#133545'],
+  'Oceans and poles':['#E1F0F6','#86B4D2','#4C86AE','#2B5F85','#143553']
+};
+
+const ANIMALS = [
+ {id:'black-rhino',name:'Black rhino',sci:'Diceros bicornis',status:'cr',region:'Africa',pop:6500,popLabel:'About 6,500',unit:'animals',trend:'up',
+  range:'Namibia, South Africa, Kenya, Zimbabwe and a few other countries',habitat:'Savanna and bushland',
+  threats:['Poaching for horn','Habitat loss','Small, isolated groups'],
+  fact:'Numbers crashed from about 65,000 in 1970 to under 2,500 in the 1990s. Since then they have nearly tripled.',
+  help:'Armed ranger patrols, moving rhinos to start new herds, and conservancies run with local communities.'},
+ {id:'mountain-gorilla',name:'Mountain gorilla',sci:'Gorilla beringei beringei',status:'en',region:'Africa',pop:1060,popLabel:'About 1,060',unit:'animals',trend:'up',
+  range:'Virunga Mountains and Bwindi forest, in Uganda, Rwanda and DR Congo',habitat:'Cool mountain forest',
+  threats:['Habitat loss','Diseases caught from people','Snares set for other animals'],
+  fact:'Gorillas were once listed as critically endangered. Careful protection moved them up to endangered in 2018.',
+  help:'Daily ranger and vet care, and tourist permits that pay for protection and give nearby communities a stake.'},
+ {id:'forest-elephant',name:'African forest elephant',sci:'Loxodonta cyclotis',status:'cr',region:'Africa',pop:null,popLabel:'Unknown',unit:'',trend:'down',
+  range:'Congo Basin forests, mainly Gabon, Congo and DR Congo',habitat:'Dense tropical rainforest',
+  threats:['Ivory poaching','Forest clearing','Roads that open remote forest'],
+  fact:'Forest elephants carry seeds of dozens of tree species across the forest, so losing them changes which trees grow.',
+  help:'Anti-poaching units, protected forest corridors, and closing ivory markets.',
+  noCount:'No reliable count exists because the forest is so dense. Scientists estimate a fall of more than 86% over 31 years.'},
+ {id:'ethiopian-wolf',name:'Ethiopian wolf',sci:'Canis simensis',status:'en',region:'Africa',pop:500,popLabel:'About 500',unit:'animals',trend:'down',
+  range:'Highlands of Ethiopia, above 3,000 metres',habitat:'High-altitude grassland',
+  threats:['Rabies and distemper from dogs','Farmland spreading uphill','Climate warming'],
+  fact:'This is the rarest canid in the world and Africa’s most threatened carnivore. It hunts giant mole-rats by day.',
+  help:'Vaccinating domestic dogs and wolves against rabies, and working with herding communities.'},
+ {id:'african-penguin',name:'African penguin',sci:'Spheniscus demersus',status:'cr',region:'Africa',pop:9900,popLabel:'About 9,900',unit:'breeding pairs',trend:'down',
+  range:'Coasts of South Africa and Namibia',habitat:'Rocky coasts and islands',
+  threats:['Fewer sardines and anchovies','Oil spills','Warming seas'],
+  fact:'They bray like donkeys, which is why they were once called jackass penguins.',
+  help:'Fishing limits around breeding colonies, rescued chicks hand-reared and released, and artificial nests.'},
+ {id:'amur-leopard',name:'Amur leopard',sci:'Panthera pardus orientalis',status:'cr',region:'Asia',pop:130,popLabel:'About 130',unit:'animals',trend:'up',
+  range:'Russian Far East and northeast China',habitat:'Temperate forest',
+  threats:['Poaching','Forest fires','Fewer deer to hunt'],
+  fact:'In 2007 only about 30 were left. A protected national park and cross-border cooperation have more than quadrupled that.',
+  help:'The Land of the Leopard National Park, camera-trap monitoring, and joint patrols with China.'},
+ {id:'javan-rhino',name:'Javan rhino',sci:'Rhinoceros sondaicus',status:'cr',region:'Asia',pop:76,popLabel:'About 76',unit:'animals',trend:'stable',
+  range:'Ujung Kulon National Park, western Java, Indonesia',habitat:'Lowland rainforest',
+  threats:['One single population','Invasive palm crowding out food','Volcano and tsunami risk'],
+  fact:'Every Javan rhino alive lives in one park. A second population in Vietnam was lost in 2010.',
+  help:'Clearing invasive plants, strict patrols, and plans to start a second population elsewhere.'},
+ {id:'sumatran-tiger',name:'Sumatran tiger',sci:'Panthera tigris sumatrae',status:'cr',region:'Asia',pop:400,popLabel:'About 400',unit:'animals',trend:'down',
+  range:'Island of Sumatra, Indonesia',habitat:'Tropical forest and peat swamp',
+  threats:['Snares and poaching','Forest cleared for palm oil and paper','Conflict with villagers'],
+  fact:'It is the smallest living tiger and the last tiger left on any Indonesian island, after the Bali and Javan tigers died out.',
+  help:'Snare removal teams, forest protection, and compensation for farmers who lose livestock.'},
+ {id:'giant-panda',name:'Giant panda',sci:'Ailuropoda melanoleuca',status:'vu',region:'Asia',pop:1860,popLabel:'About 1,860',unit:'adults',trend:'up',
+  range:'Mountains of central China',habitat:'Bamboo forest',
+  threats:['Forest split into pieces','Climate change shrinking bamboo'],
+  fact:'In 2016 pandas moved from endangered to vulnerable, a rare step in the right direction.',
+  help:'A national park system joining separate forests, and bamboo corridors between them.'},
+ {id:'snow-leopard',name:'Snow leopard',sci:'Panthera uncia',status:'vu',region:'Asia',pop:5200,popLabel:'4,000–6,500',unit:'animals',trend:'down',
+  range:'High mountains across 12 countries in Central and South Asia',habitat:'Cold, rocky alpine slopes',
+  threats:['Killed in revenge for livestock','Poaching','Warming mountains'],
+  fact:'Snow leopards cannot roar. Their thick tail helps them balance on cliffs and wraps over their face as a scarf when they sleep.',
+  help:'Predator-proof livestock pens, insurance schemes for herders, and community rangers.'},
+ {id:'sumatran-orangutan',name:'Sumatran orangutan',sci:'Pongo abelii',status:'cr',region:'Asia',pop:13800,popLabel:'About 13,800',unit:'animals',trend:'down',
+  range:'Northern Sumatra, Indonesia',habitat:'Rainforest canopy',
+  threats:['Logging','Palm oil plantations','Illegal pet trade'],
+  fact:'A female raises one baby only every eight to nine years, one of the slowest breeding rates of any mammal.',
+  help:'Protecting the Leuser forest, rehabilitating confiscated orangutans, and certified palm oil.'},
+ {id:'california-condor',name:'California condor',sci:'Gymnogyps californianus',status:'cr',region:'Americas',pop:560,popLabel:'About 560',unit:'birds',trend:'up',
+  range:'California, Arizona, Utah and Baja California',habitat:'Cliffs, canyons and open country',
+  threats:['Lead poisoning from ammunition','Swallowing trash','Slow breeding'],
+  fact:'By 1987 only 22 condors were left, and every one was taken into captive breeding.',
+  help:'Captive breeding and release, health checks in the wild, and lead-free ammunition.'},
+ {id:'golden-lion-tamarin',name:'Golden lion tamarin',sci:'Leontopithecus rosalia',status:'en',region:'Americas',pop:4800,popLabel:'About 4,800',unit:'animals',trend:'down',
+  range:'Atlantic Forest, southeast Brazil',habitat:'Lowland coastal forest',
+  threats:['Forest loss','Yellow fever outbreaks'],
+  fact:'Zoo-born tamarins were released into restored forest, one of the best-known reintroduction programs for any primate.',
+  help:'Replanting forest corridors and vaccinating wild tamarins against yellow fever.'},
+ {id:'iberian-lynx',name:'Iberian lynx',sci:'Lynx pardinus',status:'vu',region:'Europe',pop:2000,popLabel:'About 2,000',unit:'animals',trend:'up',
+  range:'Spain and Portugal',habitat:'Mediterranean scrub and woodland',
+  threats:['Fewer wild rabbits','Road deaths','Fragmented habitat'],
+  fact:'Around 2002 fewer than 100 remained, making it the world’s most endangered cat. It was downlisted to vulnerable in 2024.',
+  help:'Breeding centres, restocking rabbits, and underpasses beneath busy roads.'},
+ {id:'kakapo',name:'Kakapo',sci:'Strigops habroptilus',status:'cr',region:'Oceania',pop:240,popLabel:'About 240',unit:'birds',trend:'up',
+  range:'Predator-free islands off New Zealand',habitat:'Forest and scrub',
+  threats:['Stoats, cats and rats','Very slow breeding','Small gene pool'],
+  fact:'It is a flightless, nocturnal parrot and the heaviest in the world. It only breeds in years when rimu trees fruit heavily. Only 51 were left in 1995.',
+  help:'Every bird is named and monitored, and nests are watched around the clock.'},
+ {id:'vaquita',name:'Vaquita',sci:'Phocoena sinus',status:'cr',region:'Oceans and poles',pop:10,popLabel:'About 10',unit:'animals',trend:'down',
+  range:'Northern Gulf of California, Mexico',habitat:'Shallow, murky coastal water',
+  threats:['Drowning in illegal gillnets','Fishing for totoaba fish'],
+  fact:'It is the smallest and rarest marine mammal on Earth, and it lives in an area smaller than a large city.',
+  help:'Removing illegal nets from the sea, patrols by boat and drone, and fishing gear that does not trap porpoises.'},
+ {id:'blue-whale',name:'Blue whale',sci:'Balaenoptera musculus',status:'en',region:'Oceans and poles',pop:10000,popLabel:'5,000–15,000',unit:'animals',trend:'mixed',
+  range:'Every ocean, from the tropics to polar seas',habitat:'Open ocean',
+  threats:['Ship strikes','Underwater noise','Net entanglement','Changes in krill'],
+  fact:'It is the largest animal known to have ever lived. Whaling cut numbers by roughly 70–90%, and some groups are now slowly recovering.',
+  help:'The whaling ban, ship speed limits and shifted shipping lanes near feeding areas.'},
+ {id:'polar-bear',name:'Polar bear',sci:'Ursus maritimus',status:'vu',region:'Oceans and poles',pop:26000,popLabel:'22,000–31,000',unit:'animals',trend:'unknown',
+  range:'Arctic sea ice in Canada, Alaska, Russia, Greenland and Norway',habitat:'Sea ice and Arctic coasts',
+  threats:['Melting sea ice','Oil and gas development','Conflict with people'],
+  fact:'Polar bears hunt seals from the ice. As the ice-free season grows longer, they go hungry for more weeks each year.',
+  help:'Cutting greenhouse gas emissions is the key action, plus bear patrols that keep bears and towns apart.'}
+];
+
+const ACTIONS = [
+ ['Buy certified palm oil and paper','Look for RSPO on palm oil and FSC on paper and wood. This eases pressure on orangutan and tiger forests.'],
+ ['Choose labelled seafood','Pick MSC or ASC labels and ask where fish were caught. Cleaner fishing means fewer drowned porpoises and hungry penguins.'],
+ ['Never buy wildlife products','Skip ivory, horn, pangolin scales and exotic pets. Demand drives poaching.'],
+ ['Give to a group that shares its results','Look for annual reports that show what changed on the ground.'],
+ ['Cut the carbon you can','Less flying and less energy waste protects sea ice, mountain habitats and the krill whales eat.']
+];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store = {
+  get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ===================== MOTION LAYER: JS core (motion.html) ===================== */
+const motionOn = !reduced;
+const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+if(motionOn) document.documentElement.classList.add('js-motion');
+if(motionOn && fine) document.documentElement.classList.add('js-fine');
+const inView = el => { const r=el.getBoundingClientRect(); return r.bottom>0 && r.top<innerHeight && r.right>0 && r.left<innerWidth };
+/* [m3] reveal observer: one shared IntersectionObserver, elements opt in with reveal(el) */
+const rvIO = (motionOn && 'IntersectionObserver' in window) ? new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting){ en.target.classList.add('rv-in'); rvIO.unobserve(en.target); }
+}),{threshold:.12,rootMargin:'0px 0px -6% 0px'}) : null;
+function reveal(el,d){ if(!rvIO) return; el.setAttribute('data-rv',''); el.style.setProperty('--d',d||0); rvIO.observe(el); }
+/* [m9] FLIP for the grid when filters/sort/search change: transform + opacity only */
+let flipReady = false;
+function flipRead(grid){
+  const m=new Map(); if(!motionOn||!flipReady) return m;
+  grid.querySelectorAll('.card').forEach(c=>m.set(c.dataset.id,c.parentElement.getBoundingClientRect()));
+  return m;
+}
+function flipPlay(grid,first){
+  if(!motionOn) return;
+  const lis=[...grid.children], rects=lis.map(li=>li.getBoundingClientRect());
+  lis.forEach((li,i)=>{
+    const c=li.querySelector('.card');
+    if(!flipReady){ reveal(li,i%4); return; }
+    if(!c) return;
+    li.classList.add('rv-in');
+    const p=first.get(c.dataset.id), r=rects[i];
+    if(p){
+      const dx=p.left-r.left, dy=p.top-r.top;
+      if(Math.abs(dx)>1||Math.abs(dy)>1) li.animate([{transform:`translate3d(${dx}px,${dy}px,0)`},{transform:'none'}],{duration:650,easing:'cubic-bezier(.16,1,.3,1)'});
+    } else if(r.bottom>0 && r.top<innerHeight){
+      li.animate([{opacity:0,transform:'translate3d(0,14px,0) scale(.96)'},{opacity:1,transform:'none'}],{duration:500,delay:Math.min(i,8)*30,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'});
+    }
+  });
+  flipReady=true;
+}
+/* ================= END MOTION LAYER: JS core ================= */
+
+/* ---------- landscape art ---------- */
+function hash(s){let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
+function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function art(a,tag){
+  const p=PALETTE[a.region], r=rng(hash(a.id)), gid='g'+tag+a.id;
+  const sunX=70+r()*260, sunY=60+r()*50;
+  let hills='';
+  for(let k=0;k<3;k++){
+    const base=150+k*42, amp=34-k*6, n=9; const pts=[];
+    for(let i=0;i<=n;i++) pts.push([i*(400/n),base-r()*amp]);
+    let d=`M0,300 L0,${pts[0][1].toFixed(1)} `;
+    for(let i=0;i<n;i++){const [x,y]=pts[i],[x2,y2]=pts[i+1];d+=`Q${x.toFixed(1)},${y.toFixed(1)} ${((x+x2)/2).toFixed(1)},${((y+y2)/2).toFixed(1)} `}
+    d+=`L400,${pts[n][1].toFixed(1)} L400,300Z`;
+    hills+=`<path d="${d}" fill="${p[2+k]}"/>`;
+  }
+  return `<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p[0]}"/><stop offset="1" stop-color="${p[1]}"/></linearGradient>
+    <radialGradient id="${gid}s"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+    <rect width="400" height="300" fill="url(#${gid})"/>
+    <circle cx="${sunX.toFixed(0)}" cy="${sunY.toFixed(0)}" r="70" fill="url(#${gid}s)" opacity=".55"/>
+    <circle cx="${sunX.toFixed(0)}" cy="${sunY.toFixed(0)}" r="24" fill="#fff" opacity=".8"/>
+    ${hills}</svg>`;
+}
+
+/* ---------- state + list ---------- */
+const state = {status:null,region:null,q:'',sort:'rarest'};
+let visible = [];
+
+function buildStatus(){
+  const box=$('#status');
+  box.innerHTML=['cr','en','vu'].map(k=>{
+    const n=ANIMALS.filter(a=>a.status===k).length;
+    return `<button class="seg ${k}" type="button" data-s="${k}" aria-pressed="false"><b>${n}</b><span class="l">${STATUS[k].label}</span><span class="d">${STATUS[k].desc}</span></button>`;
+  }).join('');
+  box.addEventListener('click',e=>{
+    const b=e.target.closest('.seg'); if(!b) return;
+    state.status = state.status===b.dataset.s ? null : b.dataset.s; update();
+  });
+}
+function buildRegions(){
+  const box=$('#regions');
+  box.innerHTML=['All',...REGIONS].map(r=>`<button class="chip" type="button" data-r="${r}" aria-pressed="false">${r}</button>`).join('');
+  box.addEventListener('click',e=>{
+    const b=e.target.closest('.chip'); if(!b) return;
+    state.region = b.dataset.r==='All' ? null : b.dataset.r; update();
+  });
+}
+function matches(a){
+  if(state.status && a.status!==state.status) return false;
+  if(state.region && a.region!==state.region) return false;
+  const q=state.q.trim().toLowerCase();
+  if(q){
+    const hay=[a.name,a.sci,a.region,a.range,a.habitat,...a.threats].join(' ').toLowerCase();
+    if(!hay.includes(q)) return false;
+  }
+  return true;
+}
+function sorted(list){
+  const c=[...list];
+  if(state.sort==='name') c.sort((a,b)=>a.name.localeCompare(b.name));
+  else if(state.sort==='status') c.sort((a,b)=>STATUS[a.status].rank-STATUS[b.status].rank||(a.pop??1e9)-(b.pop??1e9));
+  else c.sort((a,b)=>(a.pop??1e9)-(b.pop??1e9));
+  return c;
+}
+function update(){
+  visible=sorted(ANIMALS.filter(matches));
+  document.querySelectorAll('.seg').forEach(b=>b.setAttribute('aria-pressed',String(state.status===b.dataset.s)));
+  document.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',String((state.region||'All')===b.dataset.r)));
+  const grid=$('#grid');
+  const flipFirst=flipRead(grid);
+  if(!visible.length){
+    grid.innerHTML=`<li class="empty"><h3>No animals match</h3><p>Try a different word, or remove a filter.</p><button class="btn primary sm" type="button" id="clear">Clear filters</button></li>`;
+    $('#clear').onclick=()=>{state.status=null;state.region=null;state.q='';$('#q').value='';update()};
+  } else {
+    grid.innerHTML=visible.map(a=>`<li><button class="card" type="button" data-id="${a.id}">
+      <span class="art">${art(a,'c')}<span class="badge s-${a.status}"><i></i>${STATUS[a.status].short}</span></span>
+      <span class="cbody"><span class="name">${esc(a.name)}</span><span class="sci">${esc(a.sci)}</span>
+      <span class="meta"><span><b>${esc(a.popLabel)}</b> ${esc(a.unit)}</span><span class="trend ${a.trend}">${TREND[a.trend]}</span></span></span></button></li>`).join('');
+  }
+  flipPlay(grid,flipFirst);
+  $('#count').textContent = `Showing ${visible.length} of ${ANIMALS.length} animals`;
+}
+$('#q').addEventListener('input',e=>{state.q=e.target.value;update()});
+$('#sort').addEventListener('change',e=>{state.sort=e.target.value;update()});
+$('#grid').addEventListener('click',e=>{const c=e.target.closest('.card'); if(c) openAnimal(c.dataset.id,c)});
+
+/* ---------- dialog ---------- */
+const dlg=$('#dlg'); let opener=null, current=null;
+function dotsFor(a){
+  if(a.pop==null) return `<p class="dots-cap">${esc(a.noCount||'No reliable count exists.')}</p>`;
+  let per=1; while(a.pop/per>150) per*=10;
+  const n=Math.max(1,Math.round(a.pop/per));
+  const color=STATUS_COLOR[a.status];
+  const unit=a.unit==='breeding pairs'?'breeding pair':a.unit.replace(/s$/,'');
+  const cap = per===1 ? `Every dot is one ${unit}. That is all of them.` : `Each dot is about ${per.toLocaleString('en-US')} ${a.unit}.`;
+  return `<div class="dots" style="--c:${color}" role="img" aria-label="${esc(a.popLabel)} ${esc(a.unit)}">${'<i></i>'.repeat(n)}</div><p class="dots-cap">${cap}</p>`;
+}
+function openAnimalNow(id,from){
+  const list = visible.length ? visible : ANIMALS;
+  let idx=list.findIndex(a=>a.id===id);
+  if(idx<0){ idx=ANIMALS.findIndex(a=>a.id===id); if(idx<0) return; renderDlg(ANIMALS[idx],ANIMALS,idx); }
+  else renderDlg(list[idx],list,idx);
+  if(from) opener=from;
+  if(!dlg.open) dlg.showModal();
+  dlg.scrollTop=0;
+  history.replaceState(null,'','#'+id);
+}
+/* [m8] open: card art morphs into dialog art via View Transitions; falls back to the original pop animation */
+const vtOK = () => motionOn && typeof document.startViewTransition==='function';
+function openAnimal(id,from){
+  const card = from && from.classList && from.classList.contains('card') ? from : null;
+  const a = card && card.querySelector('.art');
+  if(vtOK() && a && !dlg.open && inView(a)){
+    a.style.viewTransitionName='animal-art'; dlg.classList.add('vt');
+    let done=false;
+    const t=document.startViewTransition(()=>{
+      done=true; a.style.viewTransitionName=''; openAnimalNow(id,from);
+      const d=dlg.querySelector('.d-art'); if(d) d.style.viewTransitionName='animal-art';
+    });
+    t.ready.catch(()=>{}); t.updateCallbackDone.catch(()=>{}); t.finished.catch(()=>{}).then(()=>{ a.style.viewTransitionName=''; const d=dlg.querySelector('.d-art'); if(d) d.style.viewTransitionName=''; });
+    setTimeout(()=>{ if(!done){ done=true; openAnimalNow(id,from); } },1200); /* safety net */
+    return;
+  }
+  dlg.classList.remove('vt'); openAnimalNow(id,from);
+}
+function closeDlg(){
+  if(!dlg.open) return;
+  const card = $(`#grid .card[data-id="${current}"]`);
+  if(card && opener && opener.classList && opener.classList.contains('card')) opener=card;
+  const a = card && card.querySelector('.art'), src = dlg.querySelector('.d-art');
+  if(vtOK() && a && src && inView(a)){
+    src.style.viewTransitionName='animal-art';
+    const t=document.startViewTransition(()=>{ src.style.viewTransitionName=''; dlg.close(); a.style.viewTransitionName='animal-art'; });
+    t.ready.catch(()=>{}); t.updateCallbackDone.catch(()=>{}); t.finished.catch(()=>{}).then(()=>{ a.style.viewTransitionName=''; });
+    setTimeout(()=>{ if(dlg.open) dlg.close(); },1200); /* safety net if rendering is throttled */
+  } else dlg.close();
+}
+dlg.addEventListener('cancel',e=>{ if(vtOK()){ e.preventDefault(); closeDlg(); } });
+function renderDlg(a,list,i){
+  current=a.id;
+  const prev=list[(i-1+list.length)%list.length], next=list[(i+1)%list.length];
+  dlg.innerHTML=`
+  <div class="d-art">${art(a,'d')}<span class="badge s-${a.status}"><i></i>${STATUS[a.status].short}</span>
+    <button class="x" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="d-body">
+    <h2 id="dName">${esc(a.name)}</h2><p class="sci">${esc(a.sci)}</p>
+    <p class="fact">${esc(a.fact)}</p>
+    <dl class="facts">
+      <div><dt>Left in the wild</dt><dd>${esc(a.popLabel)} ${esc(a.unit)}</dd></div>
+      <div><dt>Trend</dt><dd><span class="trend ${a.trend}">${TREND[a.trend]}</span></dd></div>
+      <div><dt>Where</dt><dd>${esc(a.range)}</dd></div>
+      <div><dt>Habitat</dt><dd>${esc(a.habitat)}</dd></div>
+      <div><dt>Risk level</dt><dd>${STATUS[a.status].label}. ${STATUS[a.status].desc}</dd></div>
+    </dl>
+    <h3>The population, drawn to scale</h3>${dotsFor(a)}
+    <h3>What threatens it</h3><ul class="tags">${a.threats.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
+    <h3>What is helping</h3><p>${esc(a.help)}</p>
+    <div class="d-nav">
+      <button class="btn sm ghost" type="button" data-go="${prev.id}" aria-label="Previous animal: ${esc(prev.name)}">Previous: ${esc(prev.name)}</button>
+      <span>${i+1} of ${list.length}</span>
+      <button class="btn sm ghost" type="button" data-go="${next.id}" aria-label="Next animal: ${esc(next.name)}">Next: ${esc(next.name)}</button>
+    </div>
+  </div>`;
+  dlg.querySelectorAll('.dots i').forEach((el,k)=>el.style.setProperty('--i',k));
+}
+dlg.addEventListener('click',e=>{
+  if(e.target===dlg || e.target.closest('[data-close]')) return closeDlg();
+  const g=e.target.closest('[data-go]');
+  if(g){ const go=()=>{openAnimalNow(g.dataset.go); dlg.focus({preventScroll:true})}; if(vtOK()){ const t=document.startViewTransition(go); t.ready.catch(()=>{}); t.updateCallbackDone.catch(()=>{}); t.finished.catch(()=>{}); } else go(); }
+});
+dlg.addEventListener('close',()=>{
+  history.replaceState(null,'',location.pathname+location.search);
+  if(opener&&document.contains(opener)) opener.focus({preventScroll:true});
+});
+
+/* ---------- scale chart ---------- */
+function buildScale(){
+  const rows=ANIMALS.filter(a=>a.pop!=null).sort((a,b)=>a.pop-b.pop);
+  $('#bars').innerHTML=rows.map((a,i)=>{
+    const w=Math.max(2,Math.log10(Math.max(a.pop,1))/5*100);
+    return `<li><button class="bar" type="button" data-id="${a.id}" aria-label="${esc(a.name)}, ${esc(a.popLabel)} ${esc(a.unit)}">
+      <span class="t"><span>${esc(a.name)}</span><em>${esc(a.popLabel)}</em></span>
+      <span class="track"><span class="fill" style="width:${w.toFixed(1)}%;--c:${STATUS_COLOR[a.status]};transition-delay:${i*45}ms"></span></span></button></li>`;
+  }).join('');
+  const skipped=ANIMALS.filter(a=>a.pop==null).map(a=>a.name);
+  $('#scaleNote').textContent = (skipped.length?`Not shown: ${skipped.join(', ')}, because no reliable count exists. `:'')+'Bar colors match the risk level: red is critically endangered, orange is endangered, yellow is vulnerable. The African penguin is counted in breeding pairs.';
+  $('#bars').addEventListener('click',e=>{const b=e.target.closest('.bar'); if(b) openAnimal(b.dataset.id,b)});
+  const box=$('#scaleBox');
+  if('IntersectionObserver' in window && !reduced){
+    new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){box.classList.add('in');o.disconnect()}},{threshold:.25}).observe(box);
+  } else box.classList.add('in');
+}
+
+/* ---------- actions ---------- */
+function buildActs(){
+  let done=store.get('last-acts',[]);
+  const list=$('#acts');
+  const draw=()=>{
+    list.innerHTML=ACTIONS.map((a,i)=>`<li><button class="act" type="button" data-i="${i}" aria-pressed="${done.includes(i)}">
+      <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+      <span class="at"><b>${esc(a[0])}</b><small>${esc(a[1])}</small></span></button></li>`).join('');
+    $('#prog').textContent = done.length ? `${done.length} of ${ACTIONS.length} done.${done.length===ACTIONS.length?' That is a real start.':''}` : `0 of ${ACTIONS.length} done. Tick the ones you already do.`;
+  };
+  list.addEventListener('click',e=>{
+    const b=e.target.closest('.act'); if(!b) return;
+    const i=+b.dataset.i; done=done.includes(i)?done.filter(x=>x!==i):[...done,i]; store.set('last-acts',done);
+    b.setAttribute('aria-pressed',String(done.includes(i)));
+    $('#prog').textContent = done.length ? `${done.length} of ${ACTIONS.length} done.${done.length===ACTIONS.length?' That is a real start.':''}` : `0 of ${ACTIONS.length} done. Tick the ones you already do.`;
+  });
+  draw();
+}
+
+/* ---------- hero: Africa in dots ---------- */
+(function hero(){
+  const AF='M18 20L30 12L44 10L54 6L60 12L66 16L72 14L76 10L84 12L90 16L93 24L92 30L94 36L89 44L93 50L100 54L96 61L88 70L84 80L80 90L74 98L66 104L58 106L52 102L49 94L48 92L46 80L44 70L44 66L42 58L40 56L35 54L28 58L22 56L14 56L8 52L3 40L6 32L12 26L16 22Z';
+  const W=104,H=110, STEP=2.45;
+  const cv=$('#dots'), ctx=cv.getContext('2d');
+  const af=new Path2D(AF), mg=new Path2D(); mg.ellipse(94,84,4,10,18*Math.PI/180,0,Math.PI*2);
+  const test=document.createElement('canvas').getContext('2d');
+  const dots=[];
+  for(let y=2;y<H;y+=STEP) for(let x=2;x<W;x+=STEP){
+    const inMg=test.isPointInPath(mg,x,y);
+    const inAf=!inMg && test.isPointInPath(af,x,y);
+    if(inAf||inMg) dots.push({x,y,a:0,t:1,red:inMg,at:reduced?0:x*13+Math.random()*180});
+  }
+  /* [m10] hero depth + idle shimmer: per-dot depth z, cursor parallax, a slow light band sweeping the field */
+  dots.forEach(d=>{ d.z=(Math.sin(d.x*.37)+Math.cos(d.y*.29))*.25+.5; });
+  let scale=1,dpr=1,t0=performance.now(),running=false,last=0;
+  let tx=0,ty=0,px=0,py=0,heroVis=true,T=0;
+  const stageEl=cv.parentElement;
+  function size(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    const w=cv.clientWidth; cv.width=Math.round(w*dpr); cv.height=Math.round(w*H/W*dpr);
+    scale=cv.width/W; draw();
+  }
+  function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    const rad=0.78*scale, sweep=motionOn?((T*.00028)%1)*1.8-.4:-9;
+    for(const d of dots){
+      if(d.a<.03) continue;
+      ctx.globalAlpha=d.a;
+      ctx.fillStyle=d.red?'#C8372D':'#17302A';
+      const off=(1-d.a)*2.2, sh=(d.z-.5)*3.4;
+      const band=Math.max(0,1-Math.abs((d.x/W+d.y/H)/2-sweep)/.1);
+      ctx.beginPath(); ctx.arc((d.x+off+px*sh)*scale,(d.y-off*.6+py*sh*.7)*scale,rad*(.5+.5*d.a)*(1+.4*band)*(.9+.2*d.z),0,Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha=1;
+  }
+  const ambient=()=>motionOn&&heroVis&&!document.hidden;
+  function frame(now){
+    T=now;
+    const dt=Math.min(40,now-(last||now)); last=now;
+    let moving=false;
+    for(const d of dots){
+      if(now-t0<d.at){moving=true;continue}
+      if(Math.abs(d.t-d.a)>.01){ d.a+= (d.t-d.a)*Math.min(1,dt*(d.t>d.a?.012:.006)); moving=true } else d.a=d.t;
+    }
+    if(fine){
+      const k=Math.min(1,dt*.005);
+      px+=(tx-px)*k; py+=(ty-py)*k;
+      stageEl.style.setProperty('--hx',px.toFixed(3)); stageEl.style.setProperty('--hy',py.toFixed(3));
+    }
+    draw();
+    if(moving||ambient()) requestAnimationFrame(frame); else {running=false;last=0}
+  }
+  function kick(){ if(reduced){dots.forEach(d=>d.a=d.t);draw();} else if(!running){running=true;requestAnimationFrame(frame)} }
+  function report(){
+    const gone=dots.filter(d=>d.t===0).length, p=Math.round(gone/dots.length*100);
+    $('#erased').textContent=`${p}% gone`;
+  }
+  if(motionOn){
+    if(fine) addEventListener('pointermove',e=>{ if(e.pointerType==='mouse'){ tx=(e.clientX/innerWidth-.5)*2; ty=(e.clientY/innerHeight-.5)*2; } },{passive:true});
+    if('IntersectionObserver' in window) new IntersectionObserver(es=>{ heroVis=es[0].isIntersecting; if(heroVis) kick(); },{threshold:0}).observe(cv);
+    document.addEventListener('visibilitychange',()=>{ if(!document.hidden) kick(); });
+  }
+  cv.addEventListener('pointermove',e=>{
+    const r=cv.getBoundingClientRect(), k=W/r.width;
+    const px=(e.clientX-r.left)*k, py=(e.clientY-r.top)*k, R=7.5;
+    for(const d of dots){const dx=d.x-px,dy=d.y-py; if(dx*dx+dy*dy<R*R) d.t=0}
+    report(); kick();
+  });
+  $('#b73').onclick=()=>{
+    const order=dots.map((d,i)=>[Math.random(),i]).sort((a,b)=>a[0]-b[0]);
+    dots.forEach(d=>d.t=1);
+    const n=Math.round(dots.length*.73);
+    for(let i=0;i<n;i++) dots[order[i][1]].t=0;
+    report(); kick();
+  };
+  $('#brestore').onclick=()=>{dots.forEach(d=>d.t=1);report();kick()};
+  new ResizeObserver(size).observe(cv);
+  size(); kick();
+})();
+
+buildStatus(); buildRegions(); update(); buildScale(); buildActs();
+
+/* ===================== MOTION LAYER: JS behaviours (motion.html) ===================== */
+/* [m2] hero headline: split into words for the mask-rise entrance (text and a11y name unchanged) */
+(function heroTitle(){
+  if(!motionOn) return;
+  const h=$('.hero h1'), words=h.textContent.trim().split(/\s+/);
+  h.innerHTML=words.map((w,i)=>`<span class="w" style="--i:${i}"><span>${esc(w)}</span></span>`).join(' ');
+})();
+/* [m3] section reveals, kept to headings, intros and a few blocks */
+(function sectionReveals(){
+  if(!motionOn) return;
+  document.querySelectorAll('.sec h2,.sec .intro,.status,.controls,.note').forEach(el=>reveal(el,0));
+  document.querySelectorAll('.acts li').forEach((el,i)=>reveal(el,i));
+})();
+/* [m1] scroll progress + current section in nav */
+(function progress(){
+  const bar=document.createElement('div'); bar.className='m-progress'; bar.setAttribute('aria-hidden','true'); document.body.prepend(bar);
+  let tick=false;
+  const set=()=>{ tick=false; const h=document.documentElement.scrollHeight-innerHeight; bar.style.transform=`scaleX(${h>0?Math.min(1,scrollY/h):0})`; };
+  addEventListener('scroll',()=>{ if(!tick){tick=true;requestAnimationFrame(set)} },{passive:true});
+  addEventListener('resize',set,{passive:true}); set();
+  const links=[...document.querySelectorAll('.nav a')], map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ links.forEach(a=>a.removeAttribute('aria-current')); const a=map.get(en.target.id); if(a) a.setAttribute('aria-current','true'); } }),{rootMargin:'-45% 0px -50% 0px'});
+    map.forEach((a,id)=>{ const sec=document.getElementById(id); if(sec) io.observe(sec); });
+  }
+})();
+/* [m11] number counters for the status totals */
+(function counters(){
+  if(!motionOn || !('IntersectionObserver' in window)) return;
+  const els=[...document.querySelectorAll('.seg b')];
+  els.forEach(b=>{ b.dataset.n=b.textContent; b.textContent='0'; });
+  const io=new IntersectionObserver(es=>es.forEach(en=>{
+    if(!en.isIntersecting) return; io.unobserve(en.target);
+    const b=en.target, n=+b.dataset.n, i=els.indexOf(b), t0=performance.now()+i*140, dur=1100;
+    (function step(now){
+      const k=Math.min(1,Math.max(0,(now-t0)/dur)), e=1-Math.pow(1-k,4);
+      b.textContent=Math.round(n*e); if(k<1) requestAnimationFrame(step);
+    })(performance.now());
+  }),{threshold:.6});
+  els.forEach(b=>io.observe(b));
+})();
+/* [m4] magnetic buttons */
+(function magnetic(){
+  if(!(fine&&motionOn)) return;
+  let ev=null,queued=false;
+  const clear=b=>{ b.classList.remove('mag'); b.style.removeProperty('--mx'); b.style.removeProperty('--my'); };
+  addEventListener('pointermove',e=>{ if(e.pointerType!=='mouse') return; ev=e; if(!queued){queued=true;requestAnimationFrame(run)} },{passive:true});
+  document.documentElement.addEventListener('mouseleave',()=>document.querySelectorAll('.btn.mag').forEach(clear));
+  function run(){
+    queued=false; if(!ev) return;
+    const btns=[...document.querySelectorAll('.btn')], hit=[];
+    for(const b of btns){
+      if(dlg.open && !dlg.contains(b)){ hit.push([b,null]); continue; }
+      const r=b.getBoundingClientRect();
+      if(r.bottom<-80||r.top>innerHeight+80){ hit.push([b,null]); continue; }
+      const cx=r.left+r.width/2, cy=r.top+r.height/2, dx=ev.clientX-cx, dy=ev.clientY-cy;
+      hit.push([b,(Math.abs(dx)<r.width/2+36 && Math.abs(dy)<r.height/2+36)?[dx,dy]:null]);
+    }
+    for(const [b,v] of hit){
+      if(!v){ if(b.classList.contains('mag')) clear(b); continue; }
+      b.classList.add('mag');
+      b.style.setProperty('--mx',Math.max(-10,Math.min(10,v[0]*.28)).toFixed(1)+'px');
+      b.style.setProperty('--my',Math.max(-8,Math.min(8,v[1]*.34)).toFixed(1)+'px');
+    }
+  }
+})();
+/* [m5] card tilt + spotlight + art parallax (event delegation on the grid) */
+(function cardTilt(){
+  if(!(fine&&motionOn)) return;
+  const grid=$('#grid'); let cur=null, ev=null, raf=0;
+  const reset=c=>{ if(!c) return; c.classList.remove('tilting'); ['--rx','--ry','--px','--py'].forEach(k=>c.style.removeProperty(k)); };
+  const spotOf=c=>{ let s=c.querySelector('.spot'); if(!s){ s=document.createElement('span'); s.className='spot'; s.setAttribute('aria-hidden','true'); s.innerHTML='<i></i>'; c.appendChild(s); } return s.firstChild; };
+  grid.addEventListener('pointermove',e=>{
+    if(e.pointerType!=='mouse') return;
+    const c=e.target.closest('.card');
+    if(c!==cur){ reset(cur); cur=c; if(c){ c.classList.add('tilting'); } }
+    ev=e; if(c&&!raf) raf=requestAnimationFrame(apply);
+  },{passive:true});
+  grid.addEventListener('pointerleave',()=>{ reset(cur); cur=null; });
+  function apply(){
+    raf=0; if(!cur||!ev) return;
+    const r=cur.getBoundingClientRect(), x=ev.clientX-r.left, y=ev.clientY-r.top, nx=x/r.width, ny=y/r.height;
+    cur.style.setProperty('--ry',((nx-.5)*9).toFixed(2)+'deg');
+    cur.style.setProperty('--rx',((.5-ny)*7).toFixed(2)+'deg');
+    cur.style.setProperty('--px',((nx-.5)*2).toFixed(3));
+    cur.style.setProperty('--py',((ny-.5)*2).toFixed(3));
+    spotOf(cur).style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0)`;
+  }
+})();
+/* [m7] cursor ring */
+(function cursor(){
+  if(!(fine&&motionOn)) return;
+  const el=document.createElement('div'); el.className='m-cursor'; el.setAttribute('aria-hidden','true'); el.innerHTML='<i></i><b>Open</b>'; document.body.appendChild(el);
+  let tx=0,ty=0,x=0,y=0,seen=false,raf=0;
+  addEventListener('pointermove',e=>{
+    if(e.pointerType!=='mouse') return;
+    tx=e.clientX; ty=e.clientY; if(!seen){x=tx;y=ty;seen=true}
+    el.classList.add('on'); el.classList.toggle('off',dlg.open);
+    const t=e.target.closest&&e.target.closest('.card,.bar,a,button,input,select,#dots');
+    el.classList.toggle('is-card',!!t&&(t.classList.contains('card')||t.classList.contains('bar')));
+    el.classList.toggle('is-canvas',!!t&&t.id==='dots');
+    el.classList.toggle('is-link',!!t&&!t.classList.contains('card')&&!t.classList.contains('bar')&&t.id!=='dots');
+    if(!raf) raf=requestAnimationFrame(loop);
+  },{passive:true});
+  document.documentElement.addEventListener('mouseleave',()=>el.classList.remove('on'));
+  function loop(){
+    x+=(tx-x)*.2; y+=(ty-y)*.2;
+    el.style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0)`;
+    raf=(Math.abs(tx-x)>.1||Math.abs(ty-y)>.1)?requestAnimationFrame(loop):0;
+  }
+})();
+/* ================= END MOTION LAYER: JS behaviours ================= */
+const initial=location.hash.slice(1);
+if(initial && ANIMALS.some(a=>a.id===initial)) openAnimal(initial);
+</script>
+</body>
+</html>

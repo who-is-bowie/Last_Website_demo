@@ -1,0 +1,1295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Last — Endangered animals and how many are left</title>
+<meta name="description" content="Explore 18 endangered animals: how many are left, what threatens them, and what is helping them recover.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 110'%3E%3Cpath d='M18 20L30 12L44 10L54 6L60 12L66 16L72 14L76 10L84 12L90 16L93 24L92 30L94 36L89 44L93 50L100 54L96 61L88 70L84 80L80 90L74 98L66 104L58 106L52 102L49 94L48 92L46 80L44 70L44 66L42 58L40 56L35 54L28 58L22 56L14 56L8 52L3 40L6 32L12 26L16 22Z' fill='%23E2CB98' stroke='%23E2CB98' stroke-width='4' stroke-linejoin='round'/%3E%3Cellipse cx='94' cy='84' rx='4' ry='10' transform='rotate(18 94 84)' fill='%23E5483B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+  color-scheme:dark;
+  /* surfaces: base -> elevated -> floating */
+  --base:#0A1411; --elev:#101D19; --float:#172823; --float-2:#1D322C;
+  /* text */
+  --ivory:#EAE5D6; --ivory-2:#A9B6AD; --ivory-3:#7F8F86;
+  /* accent: brushed brass, used sparingly */
+  --brass:#C9A96A; --brass-2:#E2CB98; --brass-ink:#1A1408;
+  --line:rgba(234,229,214,.11); --line-2:rgba(234,229,214,.2);
+  /* IUCN signals (functional) */
+  --cr:#E5483B; --en:#E8913A; --vu:#E8C75A;
+  --cr-t:#FF8D80; --en-t:#F2AA66; --vu-t:#EBCF72;
+  --up:#6CCB9B;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'Source Serif 4',Georgia,serif;
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --lift:0 1px 0 rgba(234,229,214,.06) inset,0 1px 2px rgba(0,0,0,.4),0 22px 40px -18px rgba(0,0,0,.65);
+  --glass:linear-gradient(180deg,rgba(234,229,214,.055),rgba(234,229,214,.015));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;background:var(--base)}
+body{margin:0;background:var(--base);color:var(--ivory);font-family:var(--body);font-size:1.0625rem;line-height:1.75;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.16;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body:has(dialog[open]){overflow:hidden}
+h1,h2,h3,.display{font-family:var(--display);letter-spacing:-.035em;line-height:1.02;margin:0;font-weight:600}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--brass-2);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* header */
+.top{position:sticky;top:0;z-index:50;background:rgba(10,20,17,.72);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ivory)}
+.brand svg{width:28px;height:30px;display:block;color:var(--brass-2)}
+.brand span{font-family:var(--display);font-weight:600;font-size:1.6rem;letter-spacing:-.045em;line-height:1;color:var(--ivory)}
+.nav{display:flex;gap:4px}
+.nav a{font-family:var(--display);font-weight:500;font-size:.95rem;text-decoration:none;color:var(--ivory-2);padding:8px 14px;border-radius:999px;transition:transform .35s var(--spring)}
+.nav a:hover{background:rgba(234,229,214,.07);color:var(--ivory)}
+.nav a:active{transform:scale(.95)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--display);font-weight:600;font-size:1rem;letter-spacing:-.01em;border:1px solid var(--line-2);border-radius:999px;padding:13px 26px;text-decoration:none;background:transparent;color:var(--ivory);transition:transform .4s var(--spring)}
+.btn:hover{transform:translateY(-2px);border-color:var(--brass)}
+.btn:active{transform:scale(.96)}
+.btn.primary{background:linear-gradient(180deg,var(--brass-2),var(--brass));border-color:transparent;color:var(--brass-ink);box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 14px 28px -12px rgba(201,169,106,.55)}
+.btn.primary:hover{box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 18px 34px -12px rgba(226,203,152,.7)}
+.btn.ghost:hover{background:rgba(234,229,214,.06)}
+.btn.sm{padding:8px 16px;font-size:.92rem}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:64px 0 84px;
+  background:
+   radial-gradient(55% 55% at 78% 38%,rgba(201,169,106,.13),transparent 70%),
+   radial-gradient(60% 60% at 90% 20%,rgba(47,111,100,.22),transparent 70%),
+   radial-gradient(40% 40% at 0% 100%,rgba(229,72,59,.09),transparent 70%),
+   linear-gradient(180deg,#0D1A16,var(--base))}
+.hero .wrap{display:grid;gap:44px;align-items:center}
+.hero h1{font-size:clamp(3.2rem,9vw,7.2rem);max-width:9ch;font-weight:500;letter-spacing:-.05em;line-height:.94;color:var(--ivory)}
+.hero .lede{margin-top:28px;font-size:1.22rem;max-width:32em;color:var(--ivory-2)}
+.hero .cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px}
+.stage{position:relative;justify-self:center;width:min(100%,540px)}
+.stage canvas{display:block;width:100%;aspect-ratio:104/110;touch-action:pan-y;cursor:crosshair;filter:drop-shadow(0 0 28px rgba(201,169,106,.12))}
+.stage-panel{margin-top:6px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:var(--glass),rgba(23,40,35,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:20px;padding:16px 18px;box-shadow:var(--lift)}
+.stage-panel p{font-size:.95rem;line-height:1.55;max-width:26em;color:var(--ivory-2)}
+.stage-panel strong{font-family:var(--display);font-weight:500;font-size:1.7rem;letter-spacing:-.04em;color:var(--brass-2);display:block;line-height:1.1}
+.stage-actions{display:flex;gap:8px}
+@media(min-width:960px){.hero{padding:96px 0 116px}.hero .wrap{grid-template-columns:1.05fr .95fr;gap:64px}}
+
+/* sections */
+section{position:relative}
+.sec{padding:96px 0}
+.sec h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:500;letter-spacing:-.045em}
+.sec .intro{margin-top:16px;max-width:36em;color:var(--ivory-2)}
+#species,#act{background:linear-gradient(180deg,var(--base),#0C1814 50%,var(--base))}
+
+/* status bar */
+.status{margin-top:40px;display:flex;flex-direction:column;gap:10px}
+.seg{position:relative;overflow:hidden;text-align:left;border:1px solid var(--line);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:2px;transition:transform .4s var(--spring);box-shadow:var(--lift);color:var(--ivory)}
+.seg::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--sc)}
+.seg:hover{transform:translateY(-3px)}
+.seg:active{transform:scale(.98)}
+.seg b{font-family:var(--display);font-weight:500;font-size:2.8rem;line-height:1;letter-spacing:-.05em;color:var(--sct)}
+.seg .l{font-family:var(--display);font-weight:600;font-size:1.02rem}
+.seg .d{font-size:.9rem;line-height:1.45;color:var(--ivory-2)}
+.seg.cr{--sc:var(--cr);--sct:var(--cr-t);background:radial-gradient(90% 120% at 0% 0%,rgba(229,72,59,.22),transparent 65%),var(--elev)}
+.seg.en{--sc:var(--en);--sct:var(--en-t);background:radial-gradient(90% 120% at 0% 0%,rgba(232,145,58,.2),transparent 65%),var(--elev)}
+.seg.vu{--sc:var(--vu);--sct:var(--vu-t);background:radial-gradient(90% 120% at 0% 0%,rgba(232,199,90,.17),transparent 65%),var(--elev)}
+.seg[aria-pressed="true"]{outline:2px solid var(--brass-2);outline-offset:3px}
+@media(min-width:760px){.status{flex-direction:row}.seg{min-height:160px;justify-content:flex-end}.seg.cr{flex:10 1 0}.seg.en,.seg.vu{flex:4 1 0}.seg.en .d,.seg.vu .d{display:none}}
+
+/* controls */
+.controls{margin-top:32px;display:grid;gap:16px}
+.search{position:relative}
+.search input{width:100%;font:inherit;font-family:var(--display);font-size:1rem;color:var(--ivory);background:var(--elev);border:1px solid var(--line-2);border-radius:999px;padding:14px 22px 14px 48px;box-shadow:inset 0 2px 6px rgba(0,0,0,.35)}
+.search input::placeholder{color:var(--ivory-3)}
+.search input:focus-visible{outline-offset:2px}
+.search svg{position:absolute;left:18px;top:50%;width:18px;height:18px;transform:translateY(-50%);color:var(--brass)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--display);font-weight:500;font-size:.93rem;border:1px solid var(--line-2);background:transparent;color:var(--ivory-2);border-radius:999px;padding:7px 16px;transition:transform .35s var(--spring)}
+.chip:hover{border-color:var(--brass);color:var(--ivory)}
+.chip:active{transform:scale(.94)}
+.chip[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:var(--brass-ink)}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.sort{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:.93rem;color:var(--ivory-2)}
+.sort select{font:inherit;color:var(--ivory);background:var(--elev);border:1px solid var(--line-2);border-radius:999px;padding:7px 14px}
+.count{font-family:var(--display);font-size:.95rem;color:var(--ivory-2)}
+@media(min-width:900px){.controls{grid-template-columns:minmax(260px,1fr) auto;align-items:center}.controls .search{grid-column:1}.controls .row{grid-column:1 / -1}}
+
+/* cards */
+.grid{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:24px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.card{position:relative;display:block;width:100%;text-align:left;border:1px solid var(--line);padding:0;background:var(--glass),var(--elev);color:var(--ivory);border-radius:24px;box-shadow:var(--lift);transition:transform .45s var(--spring)}
+.card::after{content:"";position:absolute;inset:-1px;border-radius:inherit;box-shadow:0 0 0 1px rgba(201,169,106,.55),0 30px 50px -18px rgba(0,0,0,.8),0 0 40px -10px rgba(201,169,106,.25);opacity:0;transition:opacity .35s;pointer-events:none}
+.card:hover{transform:translateY(-5px)}
+.card:hover::after{opacity:1}
+.card:active{transform:translateY(-2px) scale(.985)}
+.art{position:relative;display:block;aspect-ratio:4/3;border-radius:23px 23px 0 0;overflow:hidden;background:var(--float)}
+.art::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,29,25,.85),transparent 55%);pointer-events:none}
+.art svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover .art svg{transform:scale(1.06)}
+.badge{position:absolute;z-index:2;left:12px;top:12px;display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-weight:600;font-size:.82rem;line-height:1;padding:7px 12px 7px 10px;border-radius:999px;background:rgba(10,20,17,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line-2);color:var(--ivory);box-shadow:0 6px 16px -6px rgba(0,0,0,.6)}
+.badge i{width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
+.s-cr{--c:var(--cr)}.s-en{--c:var(--en)}.s-vu{--c:var(--vu)}
+.cbody{display:block;padding:18px 22px 22px}
+.name{display:block;font-family:var(--display);font-weight:600;font-size:1.55rem;letter-spacing:-.035em;line-height:1.1}
+.sci{display:block;font-style:italic;color:var(--ivory-2);font-size:.97rem;margin-top:2px}
+.meta{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--display);font-size:.95rem;color:var(--ivory-2)}
+.meta b{font-weight:600;font-size:1.1rem;letter-spacing:-.02em;color:var(--ivory)}
+.trend{display:inline-flex;align-items:center;gap:6px;color:var(--ivory-2);white-space:nowrap}
+.trend::before{content:"";width:9px;height:9px;background:currentColor;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.trend.up{color:var(--up)}
+.trend.down{color:var(--cr-t)}.trend.down::before{transform:rotate(180deg)}
+.trend.stable::before,.trend.mixed::before,.trend.unknown::before{clip-path:none;height:3px;border-radius:2px;width:11px}
+.empty{grid-column:1/-1;background:var(--elev);border:1px solid var(--line);border-radius:24px;padding:44px 24px;text-align:center;box-shadow:var(--lift)}
+.empty h3{font-size:1.6rem}
+.empty p{color:var(--ivory-2);margin:8px 0 18px}
+
+/* scale */
+.dark{background:#070F0D;color:var(--ivory);overflow:hidden;
+  background-image:radial-gradient(50% 60% at 92% 0%,rgba(201,169,106,.14),transparent 70%),radial-gradient(45% 55% at 0% 100%,rgba(47,111,100,.22),transparent 70%);
+  border-block:1px solid var(--line)}
+.dark .intro{color:var(--ivory-2)}
+.scale{margin-top:44px}
+.bars{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.bar{display:grid;grid-template-columns:1fr;gap:4px;width:100%;text-align:left;border:0;background:transparent;color:inherit;border-radius:12px;padding:9px 12px;transition:transform .35s var(--spring)}
+.bar:hover{background:rgba(234,229,214,.06)}
+.bar:active{transform:scale(.99)}
+.bar .t{display:flex;justify-content:space-between;gap:12px;font-family:var(--display);font-size:.98rem}
+.bar .t em{font-style:normal;color:var(--ivory-2)}
+.track{position:relative;height:14px;border-radius:7px;background:repeating-linear-gradient(90deg,rgba(234,229,214,.14) 0 1px,transparent 1px 20%);border-right:1px solid rgba(234,229,214,.14)}
+.fill{position:absolute;left:0;top:3px;bottom:3px;border-radius:4px;background:linear-gradient(90deg,color-mix(in srgb,var(--c) 55%,transparent),var(--c));box-shadow:0 0 14px -2px var(--c);transform-origin:left;transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.scale.in .fill{transform:scaleX(1)}
+.axis{display:grid;grid-template-columns:repeat(5,1fr);margin-top:8px;padding:0 12px;font-family:var(--display);font-size:.82rem;color:var(--ivory-3)}
+.axis span:last-child{text-align:right}
+.note{margin-top:20px;font-size:.95rem;color:var(--ivory-2);max-width:40em}
+@media(min-width:760px){.bar{grid-template-columns:200px 1fr 130px;align-items:center;gap:16px}.bar .t{display:contents}.bar .t span{grid-column:1}.bar .t em{grid-column:3;grid-row:1;text-align:right;color:var(--ivory)}.track{grid-column:2;grid-row:1}.axis{margin-left:228px;margin-right:158px;padding:0}.axis span{transform:translateX(-0)}}
+
+/* act */
+.acts{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:12px;max-width:760px}
+.act{display:flex;gap:18px;align-items:flex-start;width:100%;text-align:left;border:1px solid var(--line);background:var(--glass),var(--elev);color:var(--ivory);border-radius:20px;padding:18px 20px;box-shadow:var(--lift);transition:transform .4s var(--spring)}
+.act:hover{transform:translateX(4px);border-color:rgba(201,169,106,.5)}
+.act:active{transform:scale(.99)}
+.box{flex:none;width:26px;height:26px;border-radius:9px;border:1.5px solid var(--brass);display:grid;place-items:center;margin-top:2px}
+.box svg{width:16px;height:16px;opacity:0;transform:scale(.4);transition:transform .4s var(--spring),opacity .2s;color:var(--brass-ink)}
+.act[aria-pressed="true"] .box{background:var(--brass);border-color:var(--brass)}
+.act[aria-pressed="true"] .box svg{opacity:1;transform:scale(1)}
+.act[aria-pressed="true"] .at{text-decoration:line-through;text-decoration-color:rgba(234,229,214,.35);color:var(--ivory-2)}
+.act b{display:block;font-family:var(--display);font-weight:600;font-size:1.08rem;letter-spacing:-.015em;line-height:1.3}
+.act small{display:block;font-size:.95rem;color:var(--ivory-2);line-height:1.55;margin-top:2px}
+.prog{margin-top:22px;font-family:var(--display);font-weight:600;color:var(--brass-2)}
+
+footer{padding:56px 0 72px;border-top:1px solid var(--line);background:#070F0D}
+footer .wrap{display:grid;gap:22px}
+footer p{font-size:.93rem;color:var(--ivory-2);max-width:46em;line-height:1.65}
+footer a{color:var(--brass-2)}
+
+/* dialog */
+dialog{padding:0;border:1px solid var(--line-2);border-radius:28px;width:min(760px,calc(100% - 20px));max-height:calc(100dvh - 24px);background:var(--glass),var(--float);color:var(--ivory);box-shadow:0 2px 6px rgba(0,0,0,.5),0 60px 110px -20px rgba(0,0,0,.85),0 0 60px -20px rgba(201,169,106,.2);overflow:auto;overscroll-behavior:contain}
+dialog::backdrop{background:rgba(4,9,8,.78);backdrop-filter:blur(8px)}
+dialog[open]{animation:pop .5s var(--spring)}
+dialog[open]::backdrop{animation:fade .3s}
+@keyframes pop{from{transform:translateY(24px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0}}
+.d-art{position:relative;height:210px}
+.d-art::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--float),transparent 70%);pointer-events:none}
+.d-art svg{position:absolute;inset:0;width:100%;height:100%}
+.x{position:absolute;z-index:3;right:14px;top:14px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line-2);background:rgba(10,20,17,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ivory);display:grid;place-items:center;box-shadow:0 6px 14px -6px rgba(0,0,0,.7);transition:transform .35s var(--spring)}
+.x:hover{transform:rotate(90deg)}
+.x:active{transform:scale(.9)}
+.x svg{position:static;width:18px;height:18px}
+.d-body{padding:14px 30px 30px}
+.d-body h2{font-size:clamp(2rem,6vw,3rem);font-weight:500;letter-spacing:-.045em}
+.d-body .sci{font-size:1.1rem;margin-top:6px}
+.fact{margin-top:18px;font-size:1.15rem;line-height:1.7;max-width:34em}
+.facts{display:grid;gap:0;margin:26px 0 0;border-top:1px solid var(--line)}
+.facts div{display:grid;gap:2px;padding:13px 0;border-bottom:1px solid var(--line)}
+.facts dt{font-family:var(--display);font-size:.9rem;color:var(--ivory-3);font-weight:500}
+.facts dd{margin:0;font-family:var(--display);font-weight:500;font-size:1.05rem;line-height:1.45}
+@media(min-width:620px){.facts div{grid-template-columns:130px 1fr;gap:16px;align-items:baseline}}
+.d-body h3{font-size:1.25rem;margin:32px 0 12px;letter-spacing:-.025em;color:var(--brass-2);font-weight:600}
+.dots{display:flex;flex-wrap:wrap;gap:5px;padding:18px;background:var(--base);border:1px solid var(--line);border-radius:16px;box-shadow:inset 0 2px 8px rgba(0,0,0,.4)}
+.dots i{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 8px -1px var(--c)}
+.dots-cap{font-size:.93rem;color:var(--ivory-2);margin-top:8px}
+.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tags li{font-family:var(--display);font-weight:500;font-size:.92rem;padding:6px 14px;border-radius:999px;background:rgba(229,72,59,.12);border:1px solid rgba(229,72,59,.3);color:var(--cr-t)}
+.d-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
+.d-nav span{font-family:var(--display);font-size:.9rem;color:var(--ivory-3)}
+
+
+/* MONKEY: decorative jointed climber on two edge vines (hidden on narrow screens and with reduced motion) */
+.mk-layer{pointer-events:none}
+.mk-vine{position:fixed;top:0;bottom:0;width:24px;z-index:44;pointer-events:none;opacity:.6;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='90' viewBox='0 0 24 90'%3E%3Cpath d='M12 0V90' stroke='%233E5A46' stroke-width='2.6'/%3E%3Cellipse cx='6.5' cy='28' rx='5.5' ry='2.6' transform='rotate(-32 6.5 28)' fill='%234C7054'/%3E%3Cellipse cx='17.5' cy='66' rx='5.5' ry='2.6' transform='rotate(32 17.5 66)' fill='%234C7054'/%3E%3C/svg%3E") repeat-y}
+.mk-vine.l{left:6px}.mk-vine.r{right:6px}
+.mk-rope{position:fixed;z-index:46;width:3px;border-radius:2px;background:linear-gradient(#3C5A44,#5C8564);opacity:0;transition:opacity .3s;pointer-events:none;will-change:transform}
+.mk-rope.on{opacity:.95}
+.mk-cv{position:fixed;left:0;top:0;width:240px;height:240px;z-index:47;pointer-events:none;will-change:transform;filter:drop-shadow(0 6px 6px rgba(0,0,0,.45))}
+.mk-cv.hot{pointer-events:auto;cursor:pointer}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}
+  html{scroll-behavior:auto}
+}
+/* ===================== MOTION LAYER: CSS (motion.html) =====================
+   Everything below is additive. Classes js-motion / js-fine are set by JS only when
+   prefers-reduced-motion is off (js-motion) and a mouse-like pointer exists (js-fine). */
+:root{--out:cubic-bezier(.16,1,.3,1)}
+
+/* [m1] scroll progress */
+.m-progress{position:fixed;left:0;top:0;right:0;height:3px;z-index:60;background:linear-gradient(90deg,var(--brass),var(--brass-2));transform:scaleX(0);transform-origin:0 50%;pointer-events:none;will-change:transform}
+.nav a[aria-current="true"]{background:rgba(234,229,214,.09);color:var(--ivory)}
+
+/* [m2] hero entrance: headline words rise through a mask, rest fades up */
+.js-motion .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding:.06em .04em .1em 0;margin:-.06em 0 -.1em}
+.js-motion .hero h1 .w>span{display:inline-block;transform:translate3d(0,110%,0);animation:m-rise 1s var(--out) forwards;animation-delay:calc(var(--i)*80ms + 120ms)}
+.js-motion .hero .lede,.js-motion .hero .cta,.js-motion .stage-panel{animation:m-up .9s var(--out) both}
+.js-motion .hero .lede{animation-delay:.55s}
+.js-motion .hero .cta{animation-delay:.7s}
+.js-motion .stage-panel{animation-delay:.9s}
+@keyframes m-rise{to{transform:none}}
+@keyframes m-up{from{opacity:0;transform:translate3d(0,16px,0)}to{opacity:1;transform:none}}
+/* hero depth: panel drifts opposite the dots (vars set per frame on .stage) */
+.js-fine .stage-panel{translate:calc(var(--hx,0)*-7px) calc(var(--hy,0)*-5px)}
+
+/* [m3] restrained scroll reveals */
+.js-motion [data-rv]{opacity:0;transform:translate3d(0,18px,0);transition:opacity .8s var(--out),transform .9s var(--out);transition-delay:calc(var(--d,0)*70ms)}
+.js-motion [data-rv].rv-in{opacity:1;transform:none}
+
+/* [m4] magnetic buttons (fine pointers) */
+.js-fine .btn,.js-fine .btn:hover{transform:translate3d(var(--mx,0px),var(--my,0px),0)}
+.js-fine .btn:hover{transform:translate3d(var(--mx,0px),calc(var(--my,0px) - 2px),0)}
+.js-fine .btn:active{transform:translate3d(var(--mx,0px),var(--my,0px),0) scale(.96)}
+.js-fine .btn.mag{transition:transform .22s var(--out)}
+
+/* [m5] card tilt, pointer spotlight, art parallax (fine pointers) */
+.js-fine .card,.js-fine .card:hover{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translate3d(0,var(--ty,0px),0)}
+.js-fine .card:hover{--ty:-5px}
+.js-fine .card:active{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translate3d(0,-2px,0) scale(.985)}
+.js-fine .card.tilting{transition:transform .14s linear}
+.js-fine .card .art svg{transform:scale(1.05) translate3d(calc(var(--px,0)*-9px),calc(var(--py,0)*-7px),0);transition:transform .7s var(--out)}
+.js-fine .card:hover .art svg{transform:scale(1.11) translate3d(calc(var(--px,0)*-9px),calc(var(--py,0)*-7px),0)}
+.spot{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:2;opacity:0;transition:opacity .35s}
+.spot i{position:absolute;left:-170px;top:-170px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.42),rgba(255,255,255,0) 65%);will-change:transform}
+.card:hover .spot{opacity:1}
+
+/* [m6] scale chart: dim siblings of the hovered/focused bar */
+.bars .bar{transition:transform .35s var(--spring),opacity .3s}
+@media(hover:hover){.bars:has(.bar:hover) .bar:not(:hover),.bars:has(.bar:focus-visible) .bar:not(:focus-visible){opacity:.5}}
+
+/* [m7] custom cursor ring (desktop mouse only; native cursor stays) */
+.m-cursor{position:fixed;left:0;top:0;z-index:120;pointer-events:none;opacity:0;transition:opacity .25s;mix-blend-mode:difference;will-change:transform}
+.m-cursor.on{opacity:1}.m-cursor.off{opacity:0}
+.m-cursor i{position:absolute;left:-19px;top:-19px;width:38px;height:38px;border-radius:50%;border:1.5px solid #fff;transition:transform .45s var(--spring),background-color .3s;transform:scale(.7)}
+.m-cursor.is-link i{transform:scale(1.1)}
+.m-cursor.is-card i{transform:scale(2.1);background:rgba(255,255,255,.14)}
+.m-cursor.is-canvas i{transform:scale(1.5)}
+.m-cursor b{position:absolute;left:-30px;top:-9px;width:60px;text-align:center;font:600 .72rem/18px var(--display);color:#fff;opacity:0;transform:scale(.6);transition:opacity .25s,transform .4s var(--spring)}
+.m-cursor.is-card b{opacity:1;transform:none}
+
+/* [m8] dialog: shared-element morph (View Transitions) + staggered dots */
+dialog.vt[open]{animation:none}
+::view-transition-group(animal-art){animation-duration:.6s;animation-timing-function:var(--out);z-index:1}
+::view-transition-old(animal-art),::view-transition-new(animal-art){height:100%;object-fit:cover;overflow:clip}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
+.js-motion .dots i{animation:m-dot .55s var(--spring) both;animation-delay:calc(var(--i,0)*9ms + 260ms)}
+@keyframes m-dot{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:none}}
+.seg b{font-variant-numeric:tabular-nums}
+/* =================== END MOTION LAYER: CSS =================== */
+/* PHOTOS: real photography over the generated art (art stays as the loading/fallback layer) */
+.art img.ph,.d-art img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s,transform .8s cubic-bezier(.2,.7,.2,1);filter:saturate(.88) contrast(1.06) brightness(.86)}
+.art img.ph.ok,.d-art img.ph.ok{opacity:1}
+.card:hover .art img.ph{transform:scale(1.06)}
+.js-fine .card .art img.ph{transform:scale(1.05) translate3d(calc(var(--px,0)*-9px),calc(var(--py,0)*-7px),0)}
+.js-fine .card:hover .art img.ph{transform:scale(1.11) translate3d(calc(var(--px,0)*-9px),calc(var(--py,0)*-7px),0)}
+.credits{margin-top:6px}
+.credits summary{cursor:pointer;font-family:var(--display);font-size:.93rem;color:var(--ivory-2);width:max-content;padding:4px 0}
+.credits ul{columns:2 280px;column-gap:32px;list-style:none;padding:12px 0 0;margin:0;font-size:.85rem;line-height:1.5;color:var(--ivory-3)}
+.credits li{break-inside:avoid;margin-bottom:6px}
+.credits a{color:var(--ivory-2)}
+
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}
+  html{scroll-behavior:auto}
+  .m-cursor,.spot{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="mark" viewBox="0 0 104 110">
+    <path d="M18 20L30 12L44 10L54 6L60 12L66 16L72 14L76 10L84 12L90 16L93 24L92 30L94 36L89 44L93 50L100 54L96 61L88 70L84 80L80 90L74 98L66 104L58 106L52 102L49 94L48 92L46 80L44 70L44 66L42 58L40 56L35 54L28 58L22 56L14 56L8 52L3 40L6 32L12 26L16 22Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="94" cy="84" rx="4" ry="10" transform="rotate(18 94 84)" style="fill:var(--cr)"/>
+  </symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Last, home">
+      <svg aria-hidden="true"><use href="#mark"/></svg>
+      <span>Last</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#species">Animals</a>
+      <a href="#scale">Scale</a>
+      <a href="#act">Help</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>How many are left?</h1>
+        <p class="lede">Eighteen endangered animals, what is pushing them out, and what is bringing some of them back.</p>
+        <div class="cta">
+          <a class="btn primary" href="#species">Explore the animals</a>
+          <a class="btn ghost" href="#scale">See the scale</a>
+        </div>
+      </div>
+      <div class="stage">
+        <canvas id="dots" role="img" aria-label="Africa drawn as a field of dots. Move over it to erase dots, or use the buttons below."></canvas>
+        <div class="stage-panel">
+          <p><strong id="erased">0% gone</strong>Wild animal populations that scientists monitor have fallen 73% on average since 1970 (WWF Living Planet Report 2024).</p>
+          <div class="stage-actions">
+            <button class="btn sm primary" id="b73" type="button">Show 73%</button>
+            <button class="btn sm ghost" id="brestore" type="button">Restore</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="species">
+    <div class="wrap">
+      <h2>The animals</h2>
+      <p class="intro">Tap a status to filter, or search by name. Open any card to see its numbers drawn one dot at a time.</p>
+
+      <div class="status" id="status"></div>
+
+      <div class="controls">
+        <label class="search">
+          <span class="sr">Search animals</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="Search by name, place or threat" autocomplete="off">
+        </label>
+        <div class="chips" id="regions" role="group" aria-label="Filter by region"></div>
+        <div class="row">
+          <p class="count" id="count" role="status"></p>
+          <label class="sort">Sort by
+            <select id="sort">
+              <option value="rarest">Fewest left</option>
+              <option value="name">Name</option>
+              <option value="status">Risk level</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <ul class="grid" id="grid"></ul>
+    </div>
+  </section>
+
+  <section class="sec dark" id="scale">
+    <div class="wrap">
+      <h2>How few is few?</h2>
+      <p class="intro">Every bar is a wild population. Each step to the right is ten times more animals, so a small gap here hides a huge difference. Select a bar to open that animal.</p>
+      <div class="scale" id="scaleBox">
+        <ul class="bars" id="bars"></ul>
+        <div class="axis" aria-hidden="true"><span>1</span><span>10</span><span>100</span><span>1,000</span><span>10,000</span></div>
+      </div>
+      <p class="note" id="scaleNote"></p>
+    </div>
+  </section>
+
+  <section class="sec" id="act">
+    <div class="wrap">
+      <h2>What you can do</h2>
+      <p class="intro">None of these saves a species alone. Together they reduce the pressure that put these animals on the list. Your ticks stay on this device.</p>
+      <ul class="acts" id="acts"></ul>
+      <p class="prog" id="prog" role="status"></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Last, back to top"><svg aria-hidden="true"><use href="#mark"/></svg><span>Last</span></a>
+    <p>Status categories follow the IUCN Red List of Threatened Species. Population figures are rounded estimates from recent IUCN assessments and conservation groups, and they change as surveys are updated. For current numbers, check <a href="https://www.iucnredlist.org" rel="noopener">iucnredlist.org</a>.</p>
+    <details class="credits"><summary>Photo credits</summary><ul id="credits"></ul></details>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dName"></dialog>
+
+<script>
+const STATUS = {
+  cr:{label:'Critically endangered',short:'Critically endangered',desc:'Facing an extremely high risk of extinction in the wild.',rank:0},
+  en:{label:'Endangered',short:'Endangered',desc:'Facing a very high risk of extinction in the wild.',rank:1},
+  vu:{label:'Vulnerable',short:'Vulnerable',desc:'Facing a high risk of extinction in the wild.',rank:2}
+};
+const STATUS_COLOR = {cr:'#E5483B',en:'#E8913A',vu:'#E8C75A'};
+const TREND = {up:'Increasing',down:'Decreasing',stable:'Stable',mixed:'Mixed',unknown:'Unknown'};
+const REGIONS = ['Africa','Asia','Americas','Europe','Oceania','Oceans and poles'];
+const PALETTE = {
+  'Africa':['#1B1210','#B5612F','#3B2218','#27150F','#150B08'],
+  'Asia':['#0E1F1B','#3E7A66','#1F4237','#143028','#0A1D18'],
+  'Americas':['#1A1120','#B5586C','#4A2745','#33193A','#1D0F25'],
+  'Europe':['#12142A','#6A63B0','#383169','#262050','#161236'],
+  'Oceania':['#0A1B25','#3E91A8','#1D5468','#113C4E','#08232F'],
+  'Oceans and poles':['#0A1426','#4C86B4','#244F78','#173A5E','#0B223D']
+};
+
+const IMAGES = {"black-rhino": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/South-western_black_rhinoceros_(Diceros_bicornis_occidentalis)_female.jpg/1920px-South-western_black_rhinoceros_(Diceros_bicornis_occidentalis)_female.jpg", "a": "Black rhino standing in open African bush", "f": "50% 55%", "by": "Charles J. Sharp", "l": "CC BY-SA 4.0", "p": "https://commons.wikimedia.org/wiki/File:South-western_black_rhinoceros_(Diceros_bicornis_occidentalis)_female.jpg"}, "mountain-gorilla": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Mountain_gorilla_(Gorilla_beringei_beringei)_female_3.jpg/1920px-Mountain_gorilla_(Gorilla_beringei_beringei)_female_3.jpg", "a": "Mountain gorilla female in forest", "f": "50% 40%", "by": "Charles J. Sharp", "l": "CC BY-SA 4.0", "p": "https://commons.wikimedia.org/wiki/File:Mountain_gorilla_(Gorilla_beringei_beringei)_female_3.jpg"}, "forest-elephant": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Forest_elephant_family_(6987538203).jpg/1920px-Forest_elephant_family_(6987538203).jpg", "a": "African forest elephants, adult and two calves, walking across a green rainforest clearing with dense forest behind", "f": "50% 60%", "by": "USFWS HQ (U.S. Fish and Wildlife Service)", "l": "Public domain", "p": "https://commons.wikimedia.org/wiki/File:Forest_elephant_family_(6987538203).jpg"}, "ethiopian-wolf": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ethiopian_wolf_(Canis_simensis_citernii)_2.jpg/1920px-Ethiopian_wolf_(Canis_simensis_citernii)_2.jpg", "a": "Ethiopian wolf in highland grassland", "f": "50% 50%", "by": "Charles J. Sharp", "l": "CC BY-SA 4.0", "p": "https://commons.wikimedia.org/wiki/File:Ethiopian_wolf_(Canis_simensis_citernii)_2.jpg"}, "african-penguin": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Ping%C3%BCino_de_El_Cabo_(Spheniscus_demersus),_Playa_de_Boulders,_Simon's_Town,_Sud%C3%A1frica,_2018-07-23,_DD_34.jpg/1920px-Ping%C3%BCino_de_El_Cabo_(Spheniscus_demersus),_Playa_de_Boulders,_Simon's_Town,_Sud%C3%A1frica,_2018-07-23,_DD_34.jpg", "a": "African penguin on rocks at Boulders Beach", "f": "50% 50%", "by": "Diego Delso", "l": "CC BY-SA 4.0", "p": "https://commons.wikimedia.org/wiki/File:Ping%C3%BCino_de_El_Cabo_(Spheniscus_demersus),_Playa_de_Boulders,_Simon's_Town,_Sud%C3%A1frica,_2018-07-23,_DD_34.jpg"}, "amur-leopard": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Amur_Leopard_(46872838254).jpg/1920px-Amur_Leopard_(46872838254).jpg", "a": "Amur leopard resting", "f": "50% 45%", "by": "Heather Smithers", "l": "CC BY-SA 2.0", "p": "https://commons.wikimedia.org/wiki/File:Amur_Leopard_(46872838254).jpg"}, "sumatran-tiger": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Tigre_de_Sumatra_2.jpg/1920px-Tigre_de_Sumatra_2.jpg", "a": "Sumatran tiger lying on grass, face looking at camera", "f": "50% 45%", "by": "Kaz", "l": "CC0", "p": "https://commons.wikimedia.org/wiki/File:Tigre_de_Sumatra_2.jpg"}, "giant-panda": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Panda_g%C3%A9ant_(Ailuropoda_melanoleuca)_(1).jpg/1920px-Panda_g%C3%A9ant_(Ailuropoda_melanoleuca)_(1).jpg", "a": "Giant panda", "f": "50% 45%", "by": "Gzen92", "l": "CC BY-SA 4.0", "p": "https://commons.wikimedia.org/wiki/File:Panda_g%C3%A9ant_(Ailuropoda_melanoleuca)_(1).jpg"}, "snow-leopard": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Snow_Leopard_Profiled_(17047144856).jpg/1920px-Snow_Leopard_Profiled_(17047144856).jpg", "a": "Snow leopard in profile, head and shoulders, soft blurred background", "f": "35% 40%", "by": "Eric Kilby", "l": "CC BY-SA 2.0", "p": "https://commons.wikimedia.org/wiki/File:Snow_Leopard_Profiled_(17047144856).jpg"}, "sumatran-orangutan": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Orang_Utan_Leuser.jpg/1920px-Orang_Utan_Leuser.jpg", "a": "Sumatran orangutan hanging in rainforest canopy, Gunung Leuser", "f": "50% 55%", "by": "Gube12", "l": "CC BY-SA 4.0", "p": "https://commons.wikimedia.org/wiki/File:Orang_Utan_Leuser.jpg"}, "california-condor": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Gymnogyps_californianus_-San_Diego_Zoo-8a.jpg/1920px-Gymnogyps_californianus_-San_Diego_Zoo-8a.jpg", "a": "California condor perched", "f": "50% 45%", "by": "Stacy from San Diego", "l": "CC BY 2.0", "p": "https://commons.wikimedia.org/wiki/File:Gymnogyps_californianus_-San_Diego_Zoo-8a.jpg"}, "golden-lion-tamarin": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Mico-le%C3%A3o-dourado-REBIO_de_Po%C3%A7o_das_Antas-Julio_Morais_Fine_Art(008).jpg/1920px-Mico-le%C3%A3o-dourado-REBIO_de_Po%C3%A7o_das_Antas-Julio_Morais_Fine_Art(008).jpg", "a": "Golden lion tamarin on a branch among green leaves in Atlantic forest", "f": "45% 45%", "by": "Julio Morais Fine Art", "l": "CC BY-SA 4.0", "p": "https://commons.wikimedia.org/wiki/File:Mico-le%C3%A3o-dourado-REBIO_de_Po%C3%A7o_das_Antas-Julio_Morais_Fine_Art(008).jpg"}, "iberian-lynx": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Lynx_pardinus_-_Christoph_Moning_-_482334934.jpg/1920px-Lynx_pardinus_-_Christoph_Moning_-_482334934.jpg", "a": "Iberian lynx", "f": "50% 50%", "by": "Christoph Moning", "l": "CC BY 4.0", "p": "https://commons.wikimedia.org/wiki/File:Lynx_pardinus_-_Christoph_Moning_-_482334934.jpg"}, "kakapo": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Kakapo_Sirocco_1.jpg/1920px-Kakapo_Sirocco_1.jpg", "a": "Kakapo Sirocco on forest floor", "f": "50% 45%", "by": "Department of Conservation", "l": "CC BY 2.0", "p": "https://commons.wikimedia.org/wiki/File:Kakapo_Sirocco_1.jpg"}, "vaquita": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Vaquita5_Olson_NOAA.jpg/1920px-Vaquita5_Olson_NOAA.jpg", "a": "Vaquita porpoise surfacing, dark dorsal fin and back above the water", "f": "45% 50%", "by": "Paula Olson, NOAA", "l": "Public domain", "p": "https://commons.wikimedia.org/wiki/File:Vaquita5_Olson_NOAA.jpg"}, "blue-whale": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Blow_of_a_blue_whale_in_the_Arctic_sea.jpg/1920px-Blow_of_a_blue_whale_in_the_Arctic_sea.jpg", "a": "Blue whale blow at the sea surface", "f": "50% 50%", "by": "AWeith", "l": "CC BY-SA 4.0", "p": "https://commons.wikimedia.org/wiki/File:Blow_of_a_blue_whale_in_the_Arctic_sea.jpg"}, "polar-bear": {"u": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Polar_bear_silently_stepping_from_an_ice_floe.jpg/1920px-Polar_bear_silently_stepping_from_an_ice_floe.jpg", "a": "Polar bear stepping off an ice floe", "f": "50% 50%", "by": "Andreas Weith", "l": "CC BY-SA 4.0", "p": "https://commons.wikimedia.org/wiki/File:Polar_bear_silently_stepping_from_an_ice_floe.jpg"}};
+const photo=(id,w,tag)=>{const m=IMAGES[id]; if(!m) return ''; const src=m.u.replace(/\/\d+px-/,`/${w}px-`); return `<img class="ph" src="${src}" alt="${m.a.replace(/"/g,'&quot;')}" style="object-position:${m.f}" loading="${tag==='d'?'eager':'lazy'}" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok')" onerror="this.remove()">`};
+const ANIMALS = [
+ {id:'black-rhino',name:'Black rhino',sci:'Diceros bicornis',status:'cr',region:'Africa',pop:6500,popLabel:'About 6,500',unit:'animals',trend:'up',
+  range:'Namibia, South Africa, Kenya, Zimbabwe and a few other countries',habitat:'Savanna and bushland',
+  threats:['Poaching for horn','Habitat loss','Small, isolated groups'],
+  fact:'Numbers crashed from about 65,000 in 1970 to under 2,500 in the 1990s. Since then they have nearly tripled.',
+  help:'Armed ranger patrols, moving rhinos to start new herds, and conservancies run with local communities.'},
+ {id:'mountain-gorilla',name:'Mountain gorilla',sci:'Gorilla beringei beringei',status:'en',region:'Africa',pop:1060,popLabel:'About 1,060',unit:'animals',trend:'up',
+  range:'Virunga Mountains and Bwindi forest, in Uganda, Rwanda and DR Congo',habitat:'Cool mountain forest',
+  threats:['Habitat loss','Diseases caught from people','Snares set for other animals'],
+  fact:'Gorillas were once listed as critically endangered. Careful protection moved them up to endangered in 2018.',
+  help:'Daily ranger and vet care, and tourist permits that pay for protection and give nearby communities a stake.'},
+ {id:'forest-elephant',name:'African forest elephant',sci:'Loxodonta cyclotis',status:'cr',region:'Africa',pop:null,popLabel:'Unknown',unit:'',trend:'down',
+  range:'Congo Basin forests, mainly Gabon, Congo and DR Congo',habitat:'Dense tropical rainforest',
+  threats:['Ivory poaching','Forest clearing','Roads that open remote forest'],
+  fact:'Forest elephants carry seeds of dozens of tree species across the forest, so losing them changes which trees grow.',
+  help:'Anti-poaching units, protected forest corridors, and closing ivory markets.',
+  noCount:'No reliable count exists because the forest is so dense. Scientists estimate a fall of more than 86% over 31 years.'},
+ {id:'ethiopian-wolf',name:'Ethiopian wolf',sci:'Canis simensis',status:'en',region:'Africa',pop:500,popLabel:'About 500',unit:'animals',trend:'down',
+  range:'Highlands of Ethiopia, above 3,000 metres',habitat:'High-altitude grassland',
+  threats:['Rabies and distemper from dogs','Farmland spreading uphill','Climate warming'],
+  fact:'This is the rarest canid in the world and Africa’s most threatened carnivore. It hunts giant mole-rats by day.',
+  help:'Vaccinating domestic dogs and wolves against rabies, and working with herding communities.'},
+ {id:'african-penguin',name:'African penguin',sci:'Spheniscus demersus',status:'cr',region:'Africa',pop:9900,popLabel:'About 9,900',unit:'breeding pairs',trend:'down',
+  range:'Coasts of South Africa and Namibia',habitat:'Rocky coasts and islands',
+  threats:['Fewer sardines and anchovies','Oil spills','Warming seas'],
+  fact:'They bray like donkeys, which is why they were once called jackass penguins.',
+  help:'Fishing limits around breeding colonies, rescued chicks hand-reared and released, and artificial nests.'},
+ {id:'amur-leopard',name:'Amur leopard',sci:'Panthera pardus orientalis',status:'cr',region:'Asia',pop:130,popLabel:'About 130',unit:'animals',trend:'up',
+  range:'Russian Far East and northeast China',habitat:'Temperate forest',
+  threats:['Poaching','Forest fires','Fewer deer to hunt'],
+  fact:'In 2007 only about 30 were left. A protected national park and cross-border cooperation have more than quadrupled that.',
+  help:'The Land of the Leopard National Park, camera-trap monitoring, and joint patrols with China.'},
+ {id:'javan-rhino',name:'Javan rhino',sci:'Rhinoceros sondaicus',status:'cr',region:'Asia',pop:76,popLabel:'About 76',unit:'animals',trend:'stable',
+  range:'Ujung Kulon National Park, western Java, Indonesia',habitat:'Lowland rainforest',
+  threats:['One single population','Invasive palm crowding out food','Volcano and tsunami risk'],
+  fact:'Every Javan rhino alive lives in one park. A second population in Vietnam was lost in 2010.',
+  help:'Clearing invasive plants, strict patrols, and plans to start a second population elsewhere.'},
+ {id:'sumatran-tiger',name:'Sumatran tiger',sci:'Panthera tigris sumatrae',status:'cr',region:'Asia',pop:400,popLabel:'About 400',unit:'animals',trend:'down',
+  range:'Island of Sumatra, Indonesia',habitat:'Tropical forest and peat swamp',
+  threats:['Snares and poaching','Forest cleared for palm oil and paper','Conflict with villagers'],
+  fact:'It is the smallest living tiger and the last tiger left on any Indonesian island, after the Bali and Javan tigers died out.',
+  help:'Snare removal teams, forest protection, and compensation for farmers who lose livestock.'},
+ {id:'giant-panda',name:'Giant panda',sci:'Ailuropoda melanoleuca',status:'vu',region:'Asia',pop:1860,popLabel:'About 1,860',unit:'adults',trend:'up',
+  range:'Mountains of central China',habitat:'Bamboo forest',
+  threats:['Forest split into pieces','Climate change shrinking bamboo'],
+  fact:'In 2016 pandas moved from endangered to vulnerable, a rare step in the right direction.',
+  help:'A national park system joining separate forests, and bamboo corridors between them.'},
+ {id:'snow-leopard',name:'Snow leopard',sci:'Panthera uncia',status:'vu',region:'Asia',pop:5200,popLabel:'4,000–6,500',unit:'animals',trend:'down',
+  range:'High mountains across 12 countries in Central and South Asia',habitat:'Cold, rocky alpine slopes',
+  threats:['Killed in revenge for livestock','Poaching','Warming mountains'],
+  fact:'Snow leopards cannot roar. Their thick tail helps them balance on cliffs and wraps over their face as a scarf when they sleep.',
+  help:'Predator-proof livestock pens, insurance schemes for herders, and community rangers.'},
+ {id:'sumatran-orangutan',name:'Sumatran orangutan',sci:'Pongo abelii',status:'cr',region:'Asia',pop:13800,popLabel:'About 13,800',unit:'animals',trend:'down',
+  range:'Northern Sumatra, Indonesia',habitat:'Rainforest canopy',
+  threats:['Logging','Palm oil plantations','Illegal pet trade'],
+  fact:'A female raises one baby only every eight to nine years, one of the slowest breeding rates of any mammal.',
+  help:'Protecting the Leuser forest, rehabilitating confiscated orangutans, and certified palm oil.'},
+ {id:'california-condor',name:'California condor',sci:'Gymnogyps californianus',status:'cr',region:'Americas',pop:560,popLabel:'About 560',unit:'birds',trend:'up',
+  range:'California, Arizona, Utah and Baja California',habitat:'Cliffs, canyons and open country',
+  threats:['Lead poisoning from ammunition','Swallowing trash','Slow breeding'],
+  fact:'By 1987 only 22 condors were left, and every one was taken into captive breeding.',
+  help:'Captive breeding and release, health checks in the wild, and lead-free ammunition.'},
+ {id:'golden-lion-tamarin',name:'Golden lion tamarin',sci:'Leontopithecus rosalia',status:'en',region:'Americas',pop:4800,popLabel:'About 4,800',unit:'animals',trend:'down',
+  range:'Atlantic Forest, southeast Brazil',habitat:'Lowland coastal forest',
+  threats:['Forest loss','Yellow fever outbreaks'],
+  fact:'Zoo-born tamarins were released into restored forest, one of the best-known reintroduction programs for any primate.',
+  help:'Replanting forest corridors and vaccinating wild tamarins against yellow fever.'},
+ {id:'iberian-lynx',name:'Iberian lynx',sci:'Lynx pardinus',status:'vu',region:'Europe',pop:2000,popLabel:'About 2,000',unit:'animals',trend:'up',
+  range:'Spain and Portugal',habitat:'Mediterranean scrub and woodland',
+  threats:['Fewer wild rabbits','Road deaths','Fragmented habitat'],
+  fact:'Around 2002 fewer than 100 remained, making it the world’s most endangered cat. It was downlisted to vulnerable in 2024.',
+  help:'Breeding centres, restocking rabbits, and underpasses beneath busy roads.'},
+ {id:'kakapo',name:'Kakapo',sci:'Strigops habroptilus',status:'cr',region:'Oceania',pop:240,popLabel:'About 240',unit:'birds',trend:'up',
+  range:'Predator-free islands off New Zealand',habitat:'Forest and scrub',
+  threats:['Stoats, cats and rats','Very slow breeding','Small gene pool'],
+  fact:'It is a flightless, nocturnal parrot and the heaviest in the world. It only breeds in years when rimu trees fruit heavily. Only 51 were left in 1995.',
+  help:'Every bird is named and monitored, and nests are watched around the clock.'},
+ {id:'vaquita',name:'Vaquita',sci:'Phocoena sinus',status:'cr',region:'Oceans and poles',pop:10,popLabel:'About 10',unit:'animals',trend:'down',
+  range:'Northern Gulf of California, Mexico',habitat:'Shallow, murky coastal water',
+  threats:['Drowning in illegal gillnets','Fishing for totoaba fish'],
+  fact:'It is the smallest and rarest marine mammal on Earth, and it lives in an area smaller than a large city.',
+  help:'Removing illegal nets from the sea, patrols by boat and drone, and fishing gear that does not trap porpoises.'},
+ {id:'blue-whale',name:'Blue whale',sci:'Balaenoptera musculus',status:'en',region:'Oceans and poles',pop:10000,popLabel:'5,000–15,000',unit:'animals',trend:'mixed',
+  range:'Every ocean, from the tropics to polar seas',habitat:'Open ocean',
+  threats:['Ship strikes','Underwater noise','Net entanglement','Changes in krill'],
+  fact:'It is the largest animal known to have ever lived. Whaling cut numbers by roughly 70–90%, and some groups are now slowly recovering.',
+  help:'The whaling ban, ship speed limits and shifted shipping lanes near feeding areas.'},
+ {id:'polar-bear',name:'Polar bear',sci:'Ursus maritimus',status:'vu',region:'Oceans and poles',pop:26000,popLabel:'22,000–31,000',unit:'animals',trend:'unknown',
+  range:'Arctic sea ice in Canada, Alaska, Russia, Greenland and Norway',habitat:'Sea ice and Arctic coasts',
+  threats:['Melting sea ice','Oil and gas development','Conflict with people'],
+  fact:'Polar bears hunt seals from the ice. As the ice-free season grows longer, they go hungry for more weeks each year.',
+  help:'Cutting greenhouse gas emissions is the key action, plus bear patrols that keep bears and towns apart.'}
+];
+
+const ACTIONS = [
+ ['Buy certified palm oil and paper','Look for RSPO on palm oil and FSC on paper and wood. This eases pressure on orangutan and tiger forests.'],
+ ['Choose labelled seafood','Pick MSC or ASC labels and ask where fish were caught. Cleaner fishing means fewer drowned porpoises and hungry penguins.'],
+ ['Never buy wildlife products','Skip ivory, horn, pangolin scales and exotic pets. Demand drives poaching.'],
+ ['Give to a group that shares its results','Look for annual reports that show what changed on the ground.'],
+ ['Cut the carbon you can','Less flying and less energy waste protects sea ice, mountain habitats and the krill whales eat.']
+];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store = {
+  get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ===================== MOTION LAYER: JS core (motion.html) ===================== */
+const motionOn = !reduced;
+const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+if(motionOn) document.documentElement.classList.add('js-motion');
+if(motionOn && fine) document.documentElement.classList.add('js-fine');
+const inView = el => { const r=el.getBoundingClientRect(); return r.bottom>0 && r.top<innerHeight && r.right>0 && r.left<innerWidth };
+/* [m3] reveal observer: one shared IntersectionObserver, elements opt in with reveal(el) */
+const rvIO = (motionOn && 'IntersectionObserver' in window) ? new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting){ en.target.classList.add('rv-in'); rvIO.unobserve(en.target); }
+}),{threshold:.12,rootMargin:'0px 0px -6% 0px'}) : null;
+function reveal(el,d){ if(!rvIO) return; el.setAttribute('data-rv',''); el.style.setProperty('--d',d||0); rvIO.observe(el); }
+/* [m9] FLIP for the grid when filters/sort/search change: transform + opacity only */
+let flipReady = false;
+function flipRead(grid){
+  const m=new Map(); if(!motionOn||!flipReady) return m;
+  grid.querySelectorAll('.card').forEach(c=>m.set(c.dataset.id,c.parentElement.getBoundingClientRect()));
+  return m;
+}
+function flipPlay(grid,first){
+  if(!motionOn) return;
+  const lis=[...grid.children], rects=lis.map(li=>li.getBoundingClientRect());
+  lis.forEach((li,i)=>{
+    const c=li.querySelector('.card');
+    if(!flipReady){ reveal(li,i%4); return; }
+    if(!c) return;
+    li.classList.add('rv-in');
+    const p=first.get(c.dataset.id), r=rects[i];
+    if(p){
+      const dx=p.left-r.left, dy=p.top-r.top;
+      if(Math.abs(dx)>1||Math.abs(dy)>1) li.animate([{transform:`translate3d(${dx}px,${dy}px,0)`},{transform:'none'}],{duration:650,easing:'cubic-bezier(.16,1,.3,1)'});
+    } else if(r.bottom>0 && r.top<innerHeight){
+      li.animate([{opacity:0,transform:'translate3d(0,14px,0) scale(.96)'},{opacity:1,transform:'none'}],{duration:500,delay:Math.min(i,8)*30,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'});
+    }
+  });
+  flipReady=true;
+}
+/* ================= END MOTION LAYER: JS core ================= */
+
+/* ---------- landscape art ---------- */
+function hash(s){let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
+function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function art(a,tag){
+  const p=PALETTE[a.region], r=rng(hash(a.id)), gid='g'+tag+a.id;
+  const sunX=70+r()*260, sunY=60+r()*50;
+  let hills='';
+  for(let k=0;k<3;k++){
+    const base=150+k*42, amp=34-k*6, n=9; const pts=[];
+    for(let i=0;i<=n;i++) pts.push([i*(400/n),base-r()*amp]);
+    let d=`M0,300 L0,${pts[0][1].toFixed(1)} `;
+    for(let i=0;i<n;i++){const [x,y]=pts[i],[x2,y2]=pts[i+1];d+=`Q${x.toFixed(1)},${y.toFixed(1)} ${((x+x2)/2).toFixed(1)},${((y+y2)/2).toFixed(1)} `}
+    d+=`L400,${pts[n][1].toFixed(1)} L400,300Z`;
+    hills+=`<path d="${d}" fill="${p[2+k]}"/>`;
+  }
+  return `<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p[0]}"/><stop offset="1" stop-color="${p[1]}"/></linearGradient>
+    <radialGradient id="${gid}s"><stop offset="0" stop-color="#F6DDA6" stop-opacity=".9"/><stop offset="1" stop-color="#F6DDA6" stop-opacity="0"/></radialGradient></defs>
+    <rect width="400" height="300" fill="url(#${gid})"/>
+    <circle cx="${sunX.toFixed(0)}" cy="${sunY.toFixed(0)}" r="70" fill="url(#${gid}s)" opacity=".55"/>
+    <circle cx="${sunX.toFixed(0)}" cy="${sunY.toFixed(0)}" r="20" fill="#F3E3BC" opacity=".85"/>
+    ${hills}</svg>${photo(a.id,tag==='d'?1280:960,tag)}`;
+}
+
+/* ---------- state + list ---------- */
+const state = {status:null,region:null,q:'',sort:'rarest'};
+let visible = [];
+
+function buildStatus(){
+  const box=$('#status');
+  box.innerHTML=['cr','en','vu'].map(k=>{
+    const n=ANIMALS.filter(a=>a.status===k).length;
+    return `<button class="seg ${k}" type="button" data-s="${k}" aria-pressed="false"><b>${n}</b><span class="l">${STATUS[k].label}</span><span class="d">${STATUS[k].desc}</span></button>`;
+  }).join('');
+  box.addEventListener('click',e=>{
+    const b=e.target.closest('.seg'); if(!b) return;
+    state.status = state.status===b.dataset.s ? null : b.dataset.s; update();
+  });
+}
+function buildRegions(){
+  const box=$('#regions');
+  box.innerHTML=['All',...REGIONS].map(r=>`<button class="chip" type="button" data-r="${r}" aria-pressed="false">${r}</button>`).join('');
+  box.addEventListener('click',e=>{
+    const b=e.target.closest('.chip'); if(!b) return;
+    state.region = b.dataset.r==='All' ? null : b.dataset.r; update();
+  });
+}
+function matches(a){
+  if(state.status && a.status!==state.status) return false;
+  if(state.region && a.region!==state.region) return false;
+  const q=state.q.trim().toLowerCase();
+  if(q){
+    const hay=[a.name,a.sci,a.region,a.range,a.habitat,...a.threats].join(' ').toLowerCase();
+    if(!hay.includes(q)) return false;
+  }
+  return true;
+}
+function sorted(list){
+  const c=[...list];
+  if(state.sort==='name') c.sort((a,b)=>a.name.localeCompare(b.name));
+  else if(state.sort==='status') c.sort((a,b)=>STATUS[a.status].rank-STATUS[b.status].rank||(a.pop??1e9)-(b.pop??1e9));
+  else c.sort((a,b)=>(a.pop??1e9)-(b.pop??1e9));
+  return c;
+}
+function update(){
+  visible=sorted(ANIMALS.filter(matches));
+  document.querySelectorAll('.seg').forEach(b=>b.setAttribute('aria-pressed',String(state.status===b.dataset.s)));
+  document.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',String((state.region||'All')===b.dataset.r)));
+  const grid=$('#grid');
+  const flipFirst=flipRead(grid);
+  if(!visible.length){
+    grid.innerHTML=`<li class="empty"><h3>No animals match</h3><p>Try a different word, or remove a filter.</p><button class="btn primary sm" type="button" id="clear">Clear filters</button></li>`;
+    $('#clear').onclick=()=>{state.status=null;state.region=null;state.q='';$('#q').value='';update()};
+  } else {
+    grid.innerHTML=visible.map(a=>`<li><button class="card" type="button" data-id="${a.id}">
+      <span class="art">${art(a,'c')}<span class="badge s-${a.status}"><i></i>${STATUS[a.status].short}</span></span>
+      <span class="cbody"><span class="name">${esc(a.name)}</span><span class="sci">${esc(a.sci)}</span>
+      <span class="meta"><span><b>${esc(a.popLabel)}</b> ${esc(a.unit)}</span><span class="trend ${a.trend}">${TREND[a.trend]}</span></span></span></button></li>`).join('');
+  }
+  flipPlay(grid,flipFirst);
+  $('#count').textContent = `Showing ${visible.length} of ${ANIMALS.length} animals`;
+}
+$('#q').addEventListener('input',e=>{state.q=e.target.value;update()});
+$('#sort').addEventListener('change',e=>{state.sort=e.target.value;update()});
+$('#grid').addEventListener('click',e=>{const c=e.target.closest('.card'); if(c) openAnimal(c.dataset.id,c)});
+
+/* ---------- dialog ---------- */
+const dlg=$('#dlg'); let opener=null, current=null;
+function dotsFor(a){
+  if(a.pop==null) return `<p class="dots-cap">${esc(a.noCount||'No reliable count exists.')}</p>`;
+  let per=1; while(a.pop/per>150) per*=10;
+  const n=Math.max(1,Math.round(a.pop/per));
+  const color=STATUS_COLOR[a.status];
+  const unit=a.unit==='breeding pairs'?'breeding pair':a.unit.replace(/s$/,'');
+  const cap = per===1 ? `Every dot is one ${unit}. That is all of them.` : `Each dot is about ${per.toLocaleString('en-US')} ${a.unit}.`;
+  return `<div class="dots" style="--c:${color}" role="img" aria-label="${esc(a.popLabel)} ${esc(a.unit)}">${'<i></i>'.repeat(n)}</div><p class="dots-cap">${cap}</p>`;
+}
+function openAnimalNow(id,from){
+  const list = visible.length ? visible : ANIMALS;
+  let idx=list.findIndex(a=>a.id===id);
+  if(idx<0){ idx=ANIMALS.findIndex(a=>a.id===id); if(idx<0) return; renderDlg(ANIMALS[idx],ANIMALS,idx); }
+  else renderDlg(list[idx],list,idx);
+  if(from) opener=from;
+  if(!dlg.open) dlg.showModal();
+  dlg.scrollTop=0;
+  history.replaceState(null,'','#'+id);
+}
+/* [m8] open: card art morphs into dialog art via View Transitions; falls back to the original pop animation */
+const vtOK = () => motionOn && typeof document.startViewTransition==='function';
+function openAnimal(id,from){
+  const card = from && from.classList && from.classList.contains('card') ? from : null;
+  const a = card && card.querySelector('.art');
+  if(vtOK() && a && !dlg.open && inView(a)){
+    a.style.viewTransitionName='animal-art'; dlg.classList.add('vt');
+    let done=false;
+    const t=document.startViewTransition(()=>{
+      done=true; a.style.viewTransitionName=''; openAnimalNow(id,from);
+      const d=dlg.querySelector('.d-art'); if(d) d.style.viewTransitionName='animal-art';
+    });
+    t.ready.catch(()=>{}); t.updateCallbackDone.catch(()=>{}); t.finished.catch(()=>{}).then(()=>{ a.style.viewTransitionName=''; const d=dlg.querySelector('.d-art'); if(d) d.style.viewTransitionName=''; });
+    setTimeout(()=>{ if(!done){ done=true; openAnimalNow(id,from); } },1200); /* safety net */
+    return;
+  }
+  dlg.classList.remove('vt'); openAnimalNow(id,from);
+}
+function closeDlg(){
+  if(!dlg.open) return;
+  const card = $(`#grid .card[data-id="${current}"]`);
+  if(card && opener && opener.classList && opener.classList.contains('card')) opener=card;
+  const a = card && card.querySelector('.art'), src = dlg.querySelector('.d-art');
+  if(vtOK() && a && src && inView(a)){
+    src.style.viewTransitionName='animal-art';
+    const t=document.startViewTransition(()=>{ src.style.viewTransitionName=''; dlg.close(); a.style.viewTransitionName='animal-art'; });
+    t.ready.catch(()=>{}); t.updateCallbackDone.catch(()=>{}); t.finished.catch(()=>{}).then(()=>{ a.style.viewTransitionName=''; });
+    setTimeout(()=>{ if(dlg.open) dlg.close(); },1200); /* safety net if rendering is throttled */
+  } else dlg.close();
+}
+dlg.addEventListener('cancel',e=>{ if(vtOK()){ e.preventDefault(); closeDlg(); } });
+function renderDlg(a,list,i){
+  current=a.id;
+  const prev=list[(i-1+list.length)%list.length], next=list[(i+1)%list.length];
+  dlg.innerHTML=`
+  <div class="d-art">${art(a,'d')}<span class="badge s-${a.status}"><i></i>${STATUS[a.status].short}</span>
+    <button class="x" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="d-body">
+    <h2 id="dName">${esc(a.name)}</h2><p class="sci">${esc(a.sci)}</p>
+    <p class="fact">${esc(a.fact)}</p>
+    <dl class="facts">
+      <div><dt>Left in the wild</dt><dd>${esc(a.popLabel)} ${esc(a.unit)}</dd></div>
+      <div><dt>Trend</dt><dd><span class="trend ${a.trend}">${TREND[a.trend]}</span></dd></div>
+      <div><dt>Where</dt><dd>${esc(a.range)}</dd></div>
+      <div><dt>Habitat</dt><dd>${esc(a.habitat)}</dd></div>
+      <div><dt>Risk level</dt><dd>${STATUS[a.status].label}. ${STATUS[a.status].desc}</dd></div>
+    </dl>
+    <h3>The population, drawn to scale</h3>${dotsFor(a)}
+    <h3>What threatens it</h3><ul class="tags">${a.threats.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
+    <h3>What is helping</h3><p>${esc(a.help)}</p>
+    <div class="d-nav">
+      <button class="btn sm ghost" type="button" data-go="${prev.id}" aria-label="Previous animal: ${esc(prev.name)}">Previous: ${esc(prev.name)}</button>
+      <span>${i+1} of ${list.length}</span>
+      <button class="btn sm ghost" type="button" data-go="${next.id}" aria-label="Next animal: ${esc(next.name)}">Next: ${esc(next.name)}</button>
+    </div>
+  </div>`;
+  dlg.querySelectorAll('.dots i').forEach((el,k)=>el.style.setProperty('--i',k));
+}
+dlg.addEventListener('click',e=>{
+  if(e.target===dlg || e.target.closest('[data-close]')) return closeDlg();
+  const g=e.target.closest('[data-go]');
+  if(g){ const go=()=>{openAnimalNow(g.dataset.go); dlg.focus({preventScroll:true})}; if(vtOK()){ const t=document.startViewTransition(go); t.ready.catch(()=>{}); t.updateCallbackDone.catch(()=>{}); t.finished.catch(()=>{}); } else go(); }
+});
+dlg.addEventListener('close',()=>{
+  history.replaceState(null,'',location.pathname+location.search);
+  if(opener&&document.contains(opener)) opener.focus({preventScroll:true});
+});
+
+/* ---------- scale chart ---------- */
+function buildScale(){
+  const rows=ANIMALS.filter(a=>a.pop!=null).sort((a,b)=>a.pop-b.pop);
+  $('#bars').innerHTML=rows.map((a,i)=>{
+    const w=Math.max(2,Math.log10(Math.max(a.pop,1))/5*100);
+    return `<li><button class="bar" type="button" data-id="${a.id}" aria-label="${esc(a.name)}, ${esc(a.popLabel)} ${esc(a.unit)}">
+      <span class="t"><span>${esc(a.name)}</span><em>${esc(a.popLabel)}</em></span>
+      <span class="track"><span class="fill" style="width:${w.toFixed(1)}%;--c:${STATUS_COLOR[a.status]};transition-delay:${i*45}ms"></span></span></button></li>`;
+  }).join('');
+  const skipped=ANIMALS.filter(a=>a.pop==null).map(a=>a.name);
+  $('#scaleNote').textContent = (skipped.length?`Not shown: ${skipped.join(', ')}, because no reliable count exists. `:'')+'Bar colors match the risk level: red is critically endangered, orange is endangered, yellow is vulnerable. The African penguin is counted in breeding pairs.';
+  $('#bars').addEventListener('click',e=>{const b=e.target.closest('.bar'); if(b) openAnimal(b.dataset.id,b)});
+  const box=$('#scaleBox');
+  if('IntersectionObserver' in window && !reduced){
+    new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){box.classList.add('in');o.disconnect()}},{threshold:.25}).observe(box);
+  } else box.classList.add('in');
+}
+
+/* ---------- actions ---------- */
+function buildActs(){
+  let done=store.get('last-acts',[]);
+  const list=$('#acts');
+  const draw=()=>{
+    list.innerHTML=ACTIONS.map((a,i)=>`<li><button class="act" type="button" data-i="${i}" aria-pressed="${done.includes(i)}">
+      <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+      <span class="at"><b>${esc(a[0])}</b><small>${esc(a[1])}</small></span></button></li>`).join('');
+    $('#prog').textContent = done.length ? `${done.length} of ${ACTIONS.length} done.${done.length===ACTIONS.length?' That is a real start.':''}` : `0 of ${ACTIONS.length} done. Tick the ones you already do.`;
+  };
+  list.addEventListener('click',e=>{
+    const b=e.target.closest('.act'); if(!b) return;
+    const i=+b.dataset.i; done=done.includes(i)?done.filter(x=>x!==i):[...done,i]; store.set('last-acts',done);
+    b.setAttribute('aria-pressed',String(done.includes(i)));
+    $('#prog').textContent = done.length ? `${done.length} of ${ACTIONS.length} done.${done.length===ACTIONS.length?' That is a real start.':''}` : `0 of ${ACTIONS.length} done. Tick the ones you already do.`;
+  });
+  draw();
+}
+
+/* ---------- hero: Africa in dots ---------- */
+(function hero(){
+  const AF='M18 20L30 12L44 10L54 6L60 12L66 16L72 14L76 10L84 12L90 16L93 24L92 30L94 36L89 44L93 50L100 54L96 61L88 70L84 80L80 90L74 98L66 104L58 106L52 102L49 94L48 92L46 80L44 70L44 66L42 58L40 56L35 54L28 58L22 56L14 56L8 52L3 40L6 32L12 26L16 22Z';
+  const W=104,H=110, STEP=2.45;
+  const cv=$('#dots'), ctx=cv.getContext('2d');
+  const af=new Path2D(AF), mg=new Path2D(); mg.ellipse(94,84,4,10,18*Math.PI/180,0,Math.PI*2);
+  const test=document.createElement('canvas').getContext('2d');
+  const dots=[];
+  for(let y=2;y<H;y+=STEP) for(let x=2;x<W;x+=STEP){
+    const inMg=test.isPointInPath(mg,x,y);
+    const inAf=!inMg && test.isPointInPath(af,x,y);
+    if(inAf||inMg) dots.push({x,y,a:0,t:1,red:inMg,at:reduced?0:x*13+Math.random()*180});
+  }
+  /* [m10] hero depth + idle shimmer: per-dot depth z, cursor parallax, a slow light band sweeping the field */
+  dots.forEach(d=>{ d.z=(Math.sin(d.x*.37)+Math.cos(d.y*.29))*.25+.5; });
+  let scale=1,dpr=1,t0=performance.now(),running=false,last=0;
+  let tx=0,ty=0,px=0,py=0,heroVis=true,T=0;
+  const stageEl=cv.parentElement;
+  function size(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    const w=cv.clientWidth; cv.width=Math.round(w*dpr); cv.height=Math.round(w*H/W*dpr);
+    scale=cv.width/W; draw();
+  }
+  function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    const rad=0.78*scale, sweep=motionOn?((T*.00028)%1)*1.8-.4:-9;
+    for(const d of dots){
+      if(d.a<.03) continue;
+      ctx.globalAlpha=d.a;
+      ctx.fillStyle=d.red?'#E5483B':'#D8D2BF';
+      const off=(1-d.a)*2.2, sh=(d.z-.5)*3.4;
+      const band=Math.max(0,1-Math.abs((d.x/W+d.y/H)/2-sweep)/.1);
+      ctx.beginPath(); ctx.arc((d.x+off+px*sh)*scale,(d.y-off*.6+py*sh*.7)*scale,rad*(.5+.5*d.a)*(1+.4*band)*(.9+.2*d.z),0,Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha=1;
+  }
+  const ambient=()=>motionOn&&heroVis&&!document.hidden;
+  function frame(now){
+    T=now;
+    const dt=Math.min(40,now-(last||now)); last=now;
+    let moving=false;
+    for(const d of dots){
+      if(now-t0<d.at){moving=true;continue}
+      if(Math.abs(d.t-d.a)>.01){ d.a+= (d.t-d.a)*Math.min(1,dt*(d.t>d.a?.012:.006)); moving=true } else d.a=d.t;
+    }
+    if(fine){
+      const k=Math.min(1,dt*.005);
+      px+=(tx-px)*k; py+=(ty-py)*k;
+      stageEl.style.setProperty('--hx',px.toFixed(3)); stageEl.style.setProperty('--hy',py.toFixed(3));
+    }
+    draw();
+    if(moving||ambient()) requestAnimationFrame(frame); else {running=false;last=0}
+  }
+  function kick(){ if(reduced){dots.forEach(d=>d.a=d.t);draw();} else if(!running){running=true;requestAnimationFrame(frame)} }
+  function report(){
+    const gone=dots.filter(d=>d.t===0).length, p=Math.round(gone/dots.length*100);
+    $('#erased').textContent=`${p}% gone`;
+  }
+  if(motionOn){
+    if(fine) addEventListener('pointermove',e=>{ if(e.pointerType==='mouse'){ tx=(e.clientX/innerWidth-.5)*2; ty=(e.clientY/innerHeight-.5)*2; } },{passive:true});
+    if('IntersectionObserver' in window) new IntersectionObserver(es=>{ heroVis=es[0].isIntersecting; if(heroVis) kick(); },{threshold:0}).observe(cv);
+    document.addEventListener('visibilitychange',()=>{ if(!document.hidden) kick(); });
+  }
+  cv.addEventListener('pointermove',e=>{
+    const r=cv.getBoundingClientRect(), k=W/r.width;
+    const px=(e.clientX-r.left)*k, py=(e.clientY-r.top)*k, R=7.5;
+    for(const d of dots){const dx=d.x-px,dy=d.y-py; if(dx*dx+dy*dy<R*R) d.t=0}
+    report(); kick();
+  });
+  $('#b73').onclick=()=>{
+    const order=dots.map((d,i)=>[Math.random(),i]).sort((a,b)=>a[0]-b[0]);
+    dots.forEach(d=>d.t=1);
+    const n=Math.round(dots.length*.73);
+    for(let i=0;i<n;i++) dots[order[i][1]].t=0;
+    report(); kick();
+  };
+  $('#brestore').onclick=()=>{dots.forEach(d=>d.t=1);report();kick()};
+  new ResizeObserver(size).observe(cv);
+  size(); kick();
+})();
+
+buildStatus(); buildRegions(); update(); buildScale(); buildActs();
+
+/* ===================== MOTION LAYER: JS behaviours (motion.html) ===================== */
+/* [m2] hero headline: split into words for the mask-rise entrance (text and a11y name unchanged) */
+(function heroTitle(){
+  if(!motionOn) return;
+  const h=$('.hero h1'), words=h.textContent.trim().split(/\s+/);
+  h.innerHTML=words.map((w,i)=>`<span class="w" style="--i:${i}"><span>${esc(w)}</span></span>`).join(' ');
+})();
+/* [m3] section reveals, kept to headings, intros and a few blocks */
+(function sectionReveals(){
+  if(!motionOn) return;
+  document.querySelectorAll('.sec h2,.sec .intro,.status,.controls,.note').forEach(el=>reveal(el,0));
+  document.querySelectorAll('.acts li').forEach((el,i)=>reveal(el,i));
+})();
+/* [m1] scroll progress + current section in nav */
+(function progress(){
+  const bar=document.createElement('div'); bar.className='m-progress'; bar.setAttribute('aria-hidden','true'); document.body.prepend(bar);
+  let tick=false;
+  const set=()=>{ tick=false; const h=document.documentElement.scrollHeight-innerHeight; bar.style.transform=`scaleX(${h>0?Math.min(1,scrollY/h):0})`; };
+  addEventListener('scroll',()=>{ if(!tick){tick=true;requestAnimationFrame(set)} },{passive:true});
+  addEventListener('resize',set,{passive:true}); set();
+  const links=[...document.querySelectorAll('.nav a')], map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ links.forEach(a=>a.removeAttribute('aria-current')); const a=map.get(en.target.id); if(a) a.setAttribute('aria-current','true'); } }),{rootMargin:'-45% 0px -50% 0px'});
+    map.forEach((a,id)=>{ const sec=document.getElementById(id); if(sec) io.observe(sec); });
+  }
+})();
+/* [m11] number counters for the status totals */
+(function counters(){
+  if(!motionOn || !('IntersectionObserver' in window)) return;
+  const els=[...document.querySelectorAll('.seg b')];
+  els.forEach(b=>{ b.dataset.n=b.textContent; b.textContent='0'; });
+  const io=new IntersectionObserver(es=>es.forEach(en=>{
+    if(!en.isIntersecting) return; io.unobserve(en.target);
+    const b=en.target, n=+b.dataset.n, i=els.indexOf(b), t0=performance.now()+i*140, dur=1100;
+    (function step(now){
+      const k=Math.min(1,Math.max(0,(now-t0)/dur)), e=1-Math.pow(1-k,4);
+      b.textContent=Math.round(n*e); if(k<1) requestAnimationFrame(step);
+    })(performance.now());
+  }),{threshold:.6});
+  els.forEach(b=>io.observe(b));
+})();
+/* [m4] magnetic buttons */
+(function magnetic(){
+  if(!(fine&&motionOn)) return;
+  let ev=null,queued=false;
+  const clear=b=>{ b.classList.remove('mag'); b.style.removeProperty('--mx'); b.style.removeProperty('--my'); };
+  addEventListener('pointermove',e=>{ if(e.pointerType!=='mouse') return; ev=e; if(!queued){queued=true;requestAnimationFrame(run)} },{passive:true});
+  document.documentElement.addEventListener('mouseleave',()=>document.querySelectorAll('.btn.mag').forEach(clear));
+  function run(){
+    queued=false; if(!ev) return;
+    const btns=[...document.querySelectorAll('.btn')], hit=[];
+    for(const b of btns){
+      if(dlg.open && !dlg.contains(b)){ hit.push([b,null]); continue; }
+      const r=b.getBoundingClientRect();
+      if(r.bottom<-80||r.top>innerHeight+80){ hit.push([b,null]); continue; }
+      const cx=r.left+r.width/2, cy=r.top+r.height/2, dx=ev.clientX-cx, dy=ev.clientY-cy;
+      hit.push([b,(Math.abs(dx)<r.width/2+36 && Math.abs(dy)<r.height/2+36)?[dx,dy]:null]);
+    }
+    for(const [b,v] of hit){
+      if(!v){ if(b.classList.contains('mag')) clear(b); continue; }
+      b.classList.add('mag');
+      b.style.setProperty('--mx',Math.max(-10,Math.min(10,v[0]*.28)).toFixed(1)+'px');
+      b.style.setProperty('--my',Math.max(-8,Math.min(8,v[1]*.34)).toFixed(1)+'px');
+    }
+  }
+})();
+/* [m5] card tilt + spotlight + art parallax (event delegation on the grid) */
+(function cardTilt(){
+  if(!(fine&&motionOn)) return;
+  const grid=$('#grid'); let cur=null, ev=null, raf=0;
+  const reset=c=>{ if(!c) return; c.classList.remove('tilting'); ['--rx','--ry','--px','--py'].forEach(k=>c.style.removeProperty(k)); };
+  const spotOf=c=>{ let s=c.querySelector('.spot'); if(!s){ s=document.createElement('span'); s.className='spot'; s.setAttribute('aria-hidden','true'); s.innerHTML='<i></i>'; c.appendChild(s); } return s.firstChild; };
+  grid.addEventListener('pointermove',e=>{
+    if(e.pointerType!=='mouse') return;
+    const c=e.target.closest('.card');
+    if(c!==cur){ reset(cur); cur=c; if(c){ c.classList.add('tilting'); } }
+    ev=e; if(c&&!raf) raf=requestAnimationFrame(apply);
+  },{passive:true});
+  grid.addEventListener('pointerleave',()=>{ reset(cur); cur=null; });
+  function apply(){
+    raf=0; if(!cur||!ev) return;
+    const r=cur.getBoundingClientRect(), x=ev.clientX-r.left, y=ev.clientY-r.top, nx=x/r.width, ny=y/r.height;
+    cur.style.setProperty('--ry',((nx-.5)*9).toFixed(2)+'deg');
+    cur.style.setProperty('--rx',((.5-ny)*7).toFixed(2)+'deg');
+    cur.style.setProperty('--px',((nx-.5)*2).toFixed(3));
+    cur.style.setProperty('--py',((ny-.5)*2).toFixed(3));
+    spotOf(cur).style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0)`;
+  }
+})();
+/* [m7] cursor ring */
+(function cursor(){
+  if(!(fine&&motionOn)) return;
+  const el=document.createElement('div'); el.className='m-cursor'; el.setAttribute('aria-hidden','true'); el.innerHTML='<i></i><b>Open</b>'; document.body.appendChild(el);
+  let tx=0,ty=0,x=0,y=0,seen=false,raf=0;
+  addEventListener('pointermove',e=>{
+    if(e.pointerType!=='mouse') return;
+    tx=e.clientX; ty=e.clientY; if(!seen){x=tx;y=ty;seen=true}
+    el.classList.add('on'); el.classList.toggle('off',dlg.open);
+    const t=e.target.closest&&e.target.closest('.card,.bar,a,button,input,select,#dots');
+    el.classList.toggle('is-card',!!t&&(t.classList.contains('card')||t.classList.contains('bar')));
+    el.classList.toggle('is-canvas',!!t&&t.id==='dots');
+    el.classList.toggle('is-link',!!t&&!t.classList.contains('card')&&!t.classList.contains('bar')&&t.id!=='dots');
+    if(!raf) raf=requestAnimationFrame(loop);
+  },{passive:true});
+  document.documentElement.addEventListener('mouseleave',()=>el.classList.remove('on'));
+  function loop(){
+    x+=(tx-x)*.2; y+=(ty-y)*.2;
+    el.style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0)`;
+    raf=(Math.abs(tx-x)>.1||Math.abs(ty-y)>.1)?requestAnimationFrame(loop):0;
+  }
+})();
+/* ================= END MOTION LAYER: JS behaviours ================= */
+
+/* ---------- monkey ---------- */
+(function monkey(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const mq=matchMedia('(min-width:720px)');
+  const W=18, ROPE=200, LEFF=238, DX=170, G=1500, OM=2.3, DAMP=.1, SZ=240, HALF=120, TAU=Math.PI*2;
+  const sm=u=>u<=0?0:u>=1?1:u*u*(3-2*u);
+  const ease=(c,t,dt,r)=>c+(t-c)*(1-Math.exp(-dt*r));
+  const COL={fur:'#8F6642',furD:'#5A3E29',dark:'#38261A',belly:'#E4C99D',face:'#EBD2A8',ear:'#6C4A31',muzzle:'#D9B58C'};
+
+  const layer=document.createElement('div');
+  layer.className='mk-layer'; layer.setAttribute('aria-hidden','true'); layer.style.display='none';
+  layer.innerHTML='<div class="mk-vine l"></div><div class="mk-vine r"></div><div class="mk-rope"></div><canvas class="mk-cv"></canvas>';
+  document.body.appendChild(layer);
+  const cv=layer.querySelector('canvas'), ctx=cv.getContext('2d'), rope=layer.querySelector('.mk-rope');
+  const dpr=Math.min(devicePixelRatio||1,2); cv.width=cv.height=SZ*dpr;
+
+  /* ---- state ---- */
+  let vw=0, vh=0, side=Math.random()<.5?'l':'r', vx=0, inw=1, cx=0;
+  const C={x:0,y:0}, V={x:0,y:0};
+  let rot=0, dirT=-1, dirV=-1, lean=.16, tilt=-.1, look=0, mouth=0, shift=0, phase=1.6, bob=0;
+  let mode='idle', sub='look', tm=0, until=2, ty=0, sp=70, exiting=false, fl=null, sw=null;
+  let blink=0, nextBlink=2, clock=0, raf=0, last=0, running=false;
+  const P={hA:{x:14,y:-34},hB:{x:14,y:-34},fA:{x:13,y:26},fB:{x:13,y:26}};
+  let tail=null;
+
+  const geom=()=>{vx=side==='l'?W:vw-W; inw=side==='l'?1:-1; cx=vx+inw*14};
+  const measure=()=>{vw=document.documentElement.clientWidth; vh=innerHeight; geom()};
+  const CYMIN=85, cyMax=()=>vh-62;
+  const clampY=y=>Math.min(Math.max(y,CYMIN),cyMax());
+  const shoulder=l=>({x:Math.sin(l)*12,y:-Math.cos(l)*12});
+
+  /* two-bone IK, elbow/knee bends towards -bend */
+  function ik(s,t,a,b){
+    let dx=t.x-s.x, dy=t.y-s.y, d=Math.hypot(dx,dy)||.001;
+    const mx=a+b-.01, mn=Math.abs(a-b)+.01;
+    if(d>mx){dx*=mx/d;dy*=mx/d;d=mx} else if(d<mn){d=mn}
+    const x=(a*a-b*b+d*d)/(2*d), h=Math.sqrt(Math.max(0,a*a-x*x)), ux=dx/d, uy=dy/d;
+    return {e:{x:s.x+ux*x+uy*h, y:s.y+uy*x-ux*h}, h:{x:s.x+dx,y:s.y+dy}};
+  }
+  const toWorld=(lx,ly,cy)=>{const c=Math.cos(rot), s=Math.sin(rot), x=dirV*lx; return {x:C.x+x*c-ly*s, y:cy+x*s+ly*c}};
+
+  /* ---- behaviours ---- */
+  const canSwing=()=>C.y>=95 && vh>480;
+  function pickY(){let t,n=0; do{t=CYMIN+Math.random()*(cyMax()-CYMIN)}while(Math.abs(t-C.y)<120&&++n<8); return t}
+  const goClimb=s=>{ty=pickY();sp=s;mode='climb'};
+  const goIdle=(k,d)=>{mode='idle';sub=k;tm=0;until=d};
+  function goSlide(){ty=Math.min(cyMax(),C.y+180+Math.random()*220);sp=320;mode='slide'}
+  function goHop(){
+    let y1=clampY(C.y+(Math.random()<.5?-1:1)*(110+Math.random()*120));
+    if(Math.abs(y1-C.y)<70) y1=clampY(C.y-(y1-C.y)||150);
+    const T=.5+Math.abs(y1-C.y)/800;
+    fl={kind:'hop',t:0,T,y0:C.y,y1,vy:(y1-C.y-.5*G*T*T)/T}; dirT=-inw; mode='fly';
+  }
+  function goCross(){
+    const x1=side==='l'?vw-W-14:W+14, T=Math.max(.8,Math.abs(x1-cx)/1100), y1=clampY(C.y+Math.random()*180-70);
+    const s=x1>cx?1:-1;
+    fl={kind:'cross',t:0,T,x0:cx,x1,y0:C.y,y1,vy:(y1-C.y-.5*G*T*T)/T,flip:Math.random()<.5?s:0}; dirT=s; mode='fly';
+  }
+  function startSwing(){
+    const th0=Math.asin(DX/LEFF), ax=cx+inw*DX, ay=C.y-LEFF*Math.cos(th0);
+    sw={ax,ay,th:-inw*th0,w:0,t:0};
+    rope.style.cssText=`left:${ax-1.5}px;top:-400px;height:${ay+400+ROPE}px;transform-origin:50% ${ay+400}px`;
+    rope.classList.add('on'); dirT=inw; mode='swing';
+  }
+  function land(y){
+    C.x=cx; C.y=clampY(y); rot=0; fl=null; sw=null; dirT=-inw; lean=.3; shift=6; phase=1.6;
+    rope.classList.remove('on'); mode='land'; tm=0;
+  }
+  function decide(){
+    const r=Math.random();
+    if(r<.28) return goClimb(50+Math.random()*60);
+    if(r<.40) return goIdle('look',1.8+Math.random()*2);
+    if(r<.50) return goIdle('scratch',2.2+Math.random()*1.5);
+    if(r<.58) return goIdle('hang',2.2+Math.random()*2);
+    if(r<.66 && C.y<vh-320) return goSlide();
+    if(r<.78) return goHop();
+    if(r<.90 && canSwing()) return startSwing();
+    if(r<.95){exiting=true;ty=-140;sp=95;mode='climb';return}
+    if(vw<=1100) return goCross();
+    goClimb(70);
+  }
+
+  /* ---- per-frame logic: returns raw pose targets (local, facing +x, vine at x=14) ---- */
+  function logic(dt){
+    let tl=lean0, tt=-.1, lk=0, mo=0, sh=0, bobV=0;
+    const S=shoulder(lean), H={x:-S.x,y:-S.y};
+    const grip=(ph,sa)=>({
+      hA:{x:14,y:S.y-29-sh+9*Math.sin(ph)}, hB:{x:14,y:S.y-29-sh-9*Math.sin(ph)},
+      fA:{x:13,y:H.y+13-8*Math.sin(ph)}, fB:{x:13,y:H.y+13+8*Math.sin(ph)}});
+    let T;
+    if(mode==='climb'||mode==='slide'){
+      const dir=Math.sign(ty-C.y)||1, dy=dir*sp*dt;
+      C.y+=dy; if(mode==='climb') phase+=-dy*.075;
+      if((ty-C.y)*dir<=0){
+        C.y=ty;
+        if(exiting){exiting=false;mode='away';tm=0;until=1.5+Math.random()*3;side=side==='l'?'r':'l';geom();C.y=-140}
+        else goIdle('look',.7+Math.random()*1.6);
+      }
+      tl=mode==='slide'?.3:.16+.05*Math.sin(phase); tt=-.18; bobV=mode==='slide'?0:1.4*Math.cos(2*phase);
+      T=mode==='slide'?{hA:{x:14,y:S.y-24},hB:{x:14,y:S.y-22},fA:{x:13,y:H.y+10},fB:{x:13,y:H.y+8}}:grip(phase);
+      mo=mode==='slide'?1:0;
+    }else if(mode==='idle'){
+      tm+=dt; clock+=dt;
+      tl=.12; bobV=.7*Math.sin(clock*2.4);
+      if(sub==='look'){T=grip(1.6);lk=Math.sin(clock*1.1);tt=-.1+.35*Math.sin(clock*.8)}
+      else if(sub==='scratch'){
+        T=grip(1.6); tt=.05;
+        const hc={x:S.x+3,y:S.y-9};
+        T.hA={x:hc.x-3+3.5*Math.sin(clock*16),y:hc.y-1+2*Math.cos(clock*16)};
+        T.hB={x:14,y:S.y-26}; lk=-.3; mo=.1;
+      }else{ // one-armed hang
+        sh=9; tl=.05; tt=-.05+.1*Math.sin(clock*1.5);
+        T={hA:{x:14,y:S.y-31-sh+9},hB:{x:-2+2*Math.sin(clock*1.5),y:S.y+28},
+           fA:{x:3+3*Math.sin(clock*1.5),y:H.y+27},fB:{x:-4+3*Math.sin(clock*1.5+1),y:H.y+26}};
+        T.hA.y=S.y-28; lk=Math.sin(clock*.9)*.7;
+      }
+      if(tm>=until) decide();
+    }else if(mode==='land'){
+      tm+=dt; clock+=dt; tl=.22; tt=-.05; sh=Math.max(0,6*(1-tm/.25)); T=grip(1.6);
+      if(tm>=.25) decide();
+    }else if(mode==='away'){
+      tm+=dt; C.y=-140; T=grip(1.6); if(tm>=until){ty=pickY();sp=90;mode='climb'}
+    }else if(mode==='fly'){
+      fl.t+=dt;
+      if(fl.kind==='hop'){
+        const u=Math.min(1,fl.t/fl.T);
+        C.x=cx+inw*34*Math.sin(Math.PI*u); C.y=fl.y0+fl.vy*fl.t+.5*G*fl.t*fl.t; rot=0;
+        const up=fl.y1<fl.y0;
+        T={hA:{x:15,y:S.y-(up?30:12)},hB:{x:13,y:S.y-(up?26:8)},fA:{x:6,y:H.y+(up?20:16)},fB:{x:2,y:H.y+(up?17:13)}};
+        tl=.3-.25*Math.sin(Math.PI*u); tt=-.2; mo=1;
+        if(fl.t>=fl.T) land(fl.y1);
+      }else{
+        let u;
+        if(fl.kind==='cross'){
+          u=Math.min(1,fl.t/fl.T); C.x=fl.x0+(fl.x1-fl.x0)*u; C.y=fl.y0+fl.vy*fl.t+.5*G*fl.t*fl.t;
+          V.x=(fl.x1-fl.x0)/fl.T; V.y=fl.vy+G*fl.t;
+        }else{
+          V.y+=G*dt; C.x+=V.x*dt; C.y+=V.y*dt; u=Math.min(1,fl.t/fl.Tp);
+        }
+        rot=Math.atan2(V.x,-V.y)*(1-sm((u-.55)/.45))+fl.flip*TAU*sm(u/.9);
+        dirT=V.x>0?1:-1;
+        T={hA:{x:S.x+24,y:S.y-4},hB:{x:S.x+21,y:S.y+2},fA:{x:-17,y:H.y+7},fB:{x:-11,y:H.y+12}};
+        tl=0; tt=-.25; mo=1;
+        const done=fl.kind==='cross'?fl.t>=fl.T:((C.x-cx)*inw<=0||fl.t>1.3);
+        if(done){ if(fl.kind==='cross'){side=side==='l'?'r':'l';geom()} land(C.y); }
+      }
+    }else{ // swing
+      const n=4,h=dt/n;
+      for(let i=0;i<n;i++){sw.w+=(-OM*OM*Math.sin(sw.th)-DAMP*sw.w)*h; sw.th+=sw.w*h}
+      sw.t+=dt;
+      const ux=Math.sin(sw.th), uy=Math.cos(sw.th);
+      C.x=sw.ax+LEFF*ux; C.y=sw.ay+LEFF*uy; rot=-sw.th;
+      const deg=-sw.th*57.2958; rope.style.transform=`rotate(${deg}deg)`;
+      const lk2=Math.sin(OM*sw.t*1.0)*(inw>0?-1:1);
+      T={hA:{x:1.5,y:-38},hB:{x:-1,y:-35},fA:{x:-3+6*lk2,y:H.y+24},fB:{x:-9-6*lk2,y:H.y+22}};
+      tl=0; tt=-.15; mo=.4;
+      if(sw.t>1.3){
+        const vxs=LEFF*sw.w*Math.cos(sw.th), vys=-LEFF*sw.w*Math.sin(sw.th);
+        if(vxs*inw<-90){
+          const ts=(cx-C.x)/vxs;
+          if(ts>.2&&ts<.75){
+            const ys=C.y+vys*ts+.5*G*ts*ts;
+            if(ys>CYMIN&&ys<cyMax()-10){
+              fl={kind:'leap',t:0,Tp:ts,flip:Math.random()<.45?(vxs>0?1:-1):0};
+              V.x=vxs;V.y=vys;mode='fly';rope.classList.remove('on');
+            }
+          }
+        }
+        if(sw.t>11) land(C.y);
+      }
+    }
+    return {T,tl,tt,lk,mo,sh,bobV};
+  }
+  let lean0=.16;
+
+  /* ---- tail (world-space verlet with a curled rest shape) ---- */
+  const TN=8, SEG=6.4;
+  function tailStep(dt,cy,S,H){
+    const rest=[]; let px=H.x-5, py=H.y+3, a=.92*Math.PI;
+    for(let i=0;i<TN;i++){rest.push(toWorld(px,py,cy)); px+=SEG*Math.cos(a); py+=SEG*Math.sin(a); a+=.21}
+    if(!tail){tail=rest.map(p=>({x:p.x,y:p.y,px:p.x,py:p.y}))}
+    const k=(mode==='swing'||mode==='fly')?.04:.14;
+    for(let i=1;i<TN;i++){
+      const t=tail[i], vxx=(t.x-t.px)*.94, vyy=(t.y-t.py)*.94;
+      t.px=t.x; t.py=t.y; t.x+=vxx; t.y+=vyy+750*dt*dt;
+      t.x+=(rest[i].x-t.x)*k; t.y+=(rest[i].y-t.y)*k;
+    }
+    tail[0].x=rest[0].x; tail[0].y=rest[0].y; tail[0].px=tail[0].x; tail[0].py=tail[0].y;
+    for(let pass=0;pass<2;pass++) for(let i=1;i<TN;i++){
+      const p=tail[i-1], t=tail[i]; let dx=t.x-p.x, dy=t.y-p.y, d=Math.hypot(dx,dy)||.001;
+      t.x=p.x+dx/d*SEG; t.y=p.y+dy/d*SEG;
+    }
+  }
+
+  /* ---- drawing ---- */
+  function line(a,b,w,c){ctx.strokeStyle=c;ctx.lineWidth=w;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+  function dot(p,r,c){ctx.fillStyle=c;ctx.beginPath();ctx.arc(p.x,p.y,r,0,TAU);ctx.fill()}
+  function limb(s,t,l1,l2,w1,w2,fur,ext,rEnd){
+    const j=ik(s,t,l1,l2); line(s,j.e,w1,fur); line(j.e,j.h,w2,fur); dot(j.h,rEnd,ext); return j;
+  }
+  function drawHead(S){
+    const ang=lean+tilt, hc={x:S.x+Math.sin(ang)*12+2,y:S.y-Math.cos(ang)*12};
+    ctx.save(); ctx.translate(hc.x,hc.y); ctx.rotate(tilt*.7);
+    const lx=look*2.2;
+    dot({x:-6.8-lx*.3,y:-4.2},5.4,COL.ear); dot({x:-6.8-lx*.3,y:-4.2},2.8,COL.muzzle);
+    dot({x:0,y:0},11,COL.fur);
+    ctx.fillStyle=COL.furD; ctx.beginPath(); ctx.ellipse(1,-6.6,9,3.6,0,Math.PI,TAU); ctx.fill();
+    ctx.fillStyle=COL.face; ctx.beginPath(); ctx.ellipse(4.4+lx,3,7.6,6.6,0,0,TAU); ctx.fill();
+    ctx.fillStyle=COL.muzzle; ctx.beginPath(); ctx.ellipse(9.2+lx,5.4,5.2,4.2,0,0,TAU); ctx.fill();
+    dot({x:11.6+lx,y:4.3},.8,COL.dark);
+    const ey=Math.max(.12,1-blink*1);
+    ctx.fillStyle=COL.dark; ctx.beginPath(); ctx.ellipse(5.8+lx,.9,1.9,1.9*ey,0,0,TAU); ctx.fill();
+    ctx.strokeStyle=COL.furD; ctx.lineWidth=1.3; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(3+lx,-2); ctx.lineTo(8.6+lx,-1.4); ctx.stroke();
+    ctx.strokeStyle=COL.dark; ctx.lineWidth=1.1; ctx.beginPath();
+    if(mouth>.5){ctx.fillStyle=COL.dark;ctx.beginPath();ctx.ellipse(10.4+lx,8.4,2,2.4,0,0,TAU);ctx.fill()}
+    else{ctx.moveTo(8+lx,8);ctx.quadraticCurveTo(10.4+lx,9.2,12.6+lx,7.8);ctx.stroke()}
+    ctx.restore();
+  }
+  function draw(cy){
+    ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,SZ,SZ);
+    const S=shoulder(lean), H={x:-S.x,y:-S.y};
+    // tail (world space -> canvas space)
+    const ox=C.x-HALF, oy=cy-HALF;
+    ctx.save(); ctx.lineCap='round'; ctx.lineJoin='round';
+    for(let i=1;i<TN;i++){ctx.strokeStyle=i>TN-3?COL.dark:COL.furD;ctx.lineWidth=5.6-i*.42;ctx.beginPath();ctx.moveTo(tail[i-1].x-ox,tail[i-1].y-oy);ctx.lineTo(tail[i].x-ox,tail[i].y-oy);ctx.stroke()}
+    ctx.restore();
+    ctx.translate(HALF,HALF); ctx.rotate(rot); ctx.scale(dirV,1);
+    // far limbs
+    limb(S,P.hB,17,17,6,5,COL.furD,COL.dark,3.2);
+    limb({x:H.x,y:H.y},P.fB,14.5,14.5,7,5.4,COL.furD,COL.dark,3.6);
+    // torso
+    line(S,H,18,COL.fur);
+    line({x:S.x+4,y:S.y+3},{x:H.x+3.5,y:H.y-3},8.5,COL.belly);
+    dot(H,8.8,COL.fur);
+    // near leg, head, near arm
+    limb({x:H.x,y:H.y},P.fA,14.5,14.5,7.4,5.8,COL.fur,COL.dark,3.8);
+    drawHead(S);
+    limb(S,P.hA,17,17,6.6,5.4,COL.fur,COL.dark,3.4);
+  }
+
+  /* ---- loop ---- */
+  function frame(dt){
+    clock+=0; // clock advances in idle/land only; keep a free-running one for blinking
+    nextBlink-=dt; if(nextBlink<=0){blink=1;nextBlink=2.5+Math.random()*3} if(blink>0) blink=Math.max(0,blink-dt*9);
+    const r=logic(dt);
+    // smooth pose
+    for(const k of ['hA','hB','fA','fB']){P[k].x=ease(P[k].x,r.T[k].x,dt,24);P[k].y=ease(P[k].y,r.T[k].y,dt,24)}
+    lean=ease(lean,r.tl,dt,10); tilt=ease(tilt,r.tt,dt,8); look=ease(look,r.lk,dt,6); mouth=ease(mouth,r.mo,dt,10);
+    shift=r.sh!==undefined?ease(shift,r.sh,dt,10):shift; bob=ease(bob,r.bobV,dt,12);
+    dirV=ease(dirV,dirT,dt,10);
+    if(mode==='climb'||mode==='slide'||mode==='idle'||mode==='land'){C.x=ease(C.x,cx,dt,mode==='land'?18:40); rot=ease(rot,0,dt,12); dirT=-inw}
+    const cy=C.y+(mode==='swing'||mode==='fly'?0:bob+shift);
+    if(mode==='away'||C.y<-130){cv.style.visibility='hidden';return}
+    cv.style.visibility='';
+    const S=shoulder(lean), H={x:-S.x,y:-S.y};
+    tailStep(dt,cy,S,H);
+    cv.style.transform=`translate3d(${C.x-HALF}px,${cy-HALF}px,0)`;
+    draw(cy);
+  }
+  function loop(now){ const dt=Math.min(.05,(now-last)/1000); last=now; frame(dt); raf=requestAnimationFrame(loop) }
+  function start(){
+    measure(); layer.style.display='';
+    if(!running){
+      C.y=vh*(.3+Math.random()*.4); C.x=cx; dirT=dirV=-inw; tail=null;
+      running=true; last=performance.now(); raf=requestAnimationFrame(loop);
+    }
+  }
+  function stop(){running=false;cancelAnimationFrame(raf);layer.style.display='none'}
+  /* click: only the monkey itself is clickable */
+  let hot=false;
+  addEventListener('pointermove',e=>{
+    if(!running) return;
+    const h=Math.hypot(e.clientX-C.x,e.clientY-(C.y+bob))<40 && mode!=='away';
+    if(h!==hot){hot=h;cv.classList.toggle('hot',h)}
+  },{passive:true});
+  cv.addEventListener('click',()=>{
+    if(mode==='climb'||mode==='idle'){ if(canSwing()&&Math.random()<.6) startSwing(); else goHop() }
+  });
+  addEventListener('resize',()=>{measure()},{passive:true});
+  mq.addEventListener('change',e=>e.matches?start():stop());
+  if(mq.matches) start();
+})();
+$('#credits').innerHTML=ANIMALS.filter(a=>IMAGES[a.id]).map(a=>{const m=IMAGES[a.id];return `<li>${esc(a.name)}: <a href="${esc(m.p)}" rel="noopener">photo</a> by ${esc(m.by)}, ${esc(m.l)}, via Wikimedia Commons. Darkened and cropped for display.</li>`}).join('');
+const initial=location.hash.slice(1);
+if(initial && ANIMALS.some(a=>a.id===initial)) openAnimal(initial);
+</script>
+</body>
+</html>
